@@ -6,12 +6,15 @@ def transcription(ADN):
     'A': 'U',
   }
   ARN = "".join([toARN[x] for x in ADN])
-  ARN_start = [
-    x for x in range(len(ARN)) if ARN[x] + ARN[x + 1] + ARN[x + 2] == "AUG"
-  ]
+  # aucun sens ce que j'ai tapé,
+  # ARN[:x] te donne ce qu'il y'a avant l'index x on est d'accord ?
+  # je sais plus comment slicer je me fait avoir à chaque fois
+  # string = slice(6)   => les 6 premiers caracteres  (jcrois) ok
+  ARN_start = 'AUG' + ARN.split('AUG', 1)[1]
   return ARN_start, ARN
 
 
+#TODO rajouter utilisation STOP
 def traduction(ARN_start):
   trad = {
     "UUU": "Phe",
@@ -81,5 +84,8 @@ def traduction(ARN_start):
   }
   return "".join([
     trad[ARN_start[x] + ARN_start[x + 1] + ARN_start[x + 2]]
-    for x in range(0, len(ARN_start), 3)
+    for x in range(0,
+                   len(ARN_start) - 2, 3)
   ])
+# Bon je vais arrêter je pense
+# Je t'ai invité au github
