@@ -14,7 +14,6 @@ def transcription(ADN):
   return ARN_start, ARN
 
 
-#TODO rajouter utilisation STOP
 def traduction(ARN_start):
   trad = {
     "UUU": "Phe",
@@ -82,10 +81,9 @@ def traduction(ARN_start):
     "GGA": "Gly",
     "GGG": "Gly"
   }
-  return "".join([
+  GEN = "".join([
     trad[ARN_start[x] + ARN_start[x + 1] + ARN_start[x + 2]]
     for x in range(0,
                    len(ARN_start) - 2, 3)
   ])
-# Bon je vais arrêter je pense
-# Je t'ai invité au github
+  return GEN.split('STOP', 1)[0]
