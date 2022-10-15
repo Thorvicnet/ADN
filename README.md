@@ -1,2 +1,4 @@
 # ADN
-????
+
+- Language
+- Webapp
