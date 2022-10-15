@@ -1,0 +1,3 @@
+mais ta ligne de code : ARN_start = 'AUG' + ARN.split('AUG', 1)[1] a une IndexError quand 'AUG' n'est pas générer par gen_adn() (logique)
+au debut j'ai fait un try: except mais faut regenerer gen_adn donc boucle infini (d'erreurs) quand c'est faux, donc j'avais pensé a faire une boucle while qui englobe les deux fonctions mais c'est vraiment degueulasse. En attendant je fais juste une boucle conditionnelle if 'AUG' in ARN_start: ARN_start = 'AUG' + ARN.split('AUG', 1)[1] else : sys.exit()
+J'ai au final réussi en gardant ma boucle conditionnelle et je retourne False si il n'y a pas de codon d'initiation et dans main.py je verifie si transcription() retourne False, si c'est le cas je relance le programme pour regénérer un nouveau brin d'ADN

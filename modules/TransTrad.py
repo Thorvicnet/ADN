@@ -1,12 +1,29 @@
-def transcription(ADN):
+from random import randint
+
+# generateur du brin d'ADN
+def gen_adn(ADN):
+  brin_ADN = "".join([ADN[randint(0, len(ADN) - 1)] for _ in range(100)])
+  
+  return brin_ADN
+
+def transcription(brin_ADN):
   toARN = {
     'C': 'G',
     'G': 'C',
     'T': 'A',
-    'A': 'U',
+    'A': 'U'
   }
-  ARN = "".join([toARN[x] for x in ADN])
-  ARN_start = 'AUG' + ARN.split('AUG', 1)[1]
+  # si le codon d'initiation n'a pas été généré, on retourne False
+  if 'TAC' in brin_ADN:  # 'TAC' equivalent a AUG avant la transcription
+    pass
+  else:
+    print(f"Format du brin invalide (pas de codon d'initiation) : {brin_ADN}\n")
+    print("Regénération du brin d'ADN...\n\n")
+    return False
+  # portions d'ADN génomique sont transcrites en ARN messager
+  ARN = "".join([toARN[x] for x in brin_ADN])
+  ARN_start = 'AUG' + ARN.split('AUG', 1)[1]  # AUG : START (Met)
+  
   return ARN_start, ARN
 
 
@@ -20,14 +37,14 @@ def traduction(ARN_start):
     "CUG": "Leu",
     "UUA": "Leu",
     "UUG": "Leu",
-    "AUU": "lle",
-    "AUC": "lle",
-    "AUA": "lle",
+    "AUU": "Ile",
+    "AUC": "Ile",
+    "AUA": "Ile",
     "AUG": "Met",
-    "GUU": "val",
+    "GUU": "Val",
     "GUC": "Val",
-    "GUA": "Var",
-    "GUG": "Var",
+    "GUA": "Val",
+    "GUG": "Val",
     "UCU": "Ser",
     "UCC": "Ser",
     "UCA": "Ser",
@@ -78,8 +95,12 @@ def traduction(ARN_start):
     "GGG": "Gly"
   }
   GEN = "".join([
-    trad[ARN_start[x] + ARN_start[x + 1] + ARN_start[x + 2]]
-    for x in range(0,
-                   len(ARN_start) - 2, 3)
+    trad[ARN_start[x] + ARN_start[x + 1] +
+         ARN_start[x +
+                   2]]  # parcourir ARN_start de 3 par 3 et comparer la valeur
+    for x in range(
+      0,  # correspondante avec trad
+      len(ARN_start) - 2,
+      3)
   ])
   return GEN.split('STOP', 1)[0]
