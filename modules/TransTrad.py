@@ -3,8 +3,8 @@ from random import randint
 # generateur du brin d'ADN
 def gen_adn(ADN):
   brin_ADN = "".join([ADN[randint(0, len(ADN) - 1)] for _ in range(100)])
-  
   return brin_ADN
+
 
 def transcription(brin_ADN):
   toARN = {
@@ -16,9 +16,8 @@ def transcription(brin_ADN):
   # si le codon d'initiation n'a pas été généré, on retourne False
   if 'TAC' in brin_ADN:  # 'TAC' equivalent a AUG avant la transcription
     pass
-  else:
-    print(f"Format du brin invalide (pas de codon d'initiation) : {brin_ADN}\n")
-    print("Regénération du brin d'ADN...\n\n")
+  else: 
+    print("Regénération du brin d'ADN...\n")
     return False
   # portions d'ADN génomique sont transcrites en ARN messager
   ARN = "".join([toARN[x] for x in brin_ADN])
