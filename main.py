@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from DNAGeneration import run
+from modules.DNAGeneration import run
 
 app = Flask(__name__)
 
