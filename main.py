@@ -1,17 +1,13 @@
-from modules.TransTrad import gen_adn, traduction, transcription
+from flask import Flask, render_template
+from DNAGeneration import run
 
-ADN = ['A', 'T', 'C', 'G']
-
-def run():
-  brin_ADN = gen_adn(ADN)
-  if transcription(brin_ADN) is False:
-    run()
-  else:
-    ARN_start, ARN = transcription(brin_ADN)
-    GEN = traduction(ARN_start)
-    print('ADN :\n' + brin_ADN + '\n\nARNm :\n' + ARN + '\n\nARNm_START :\n' +
-          ARN_start + '\n\nProtéine :\n' + GEN)
+app = Flask(__name__)
 
 
-if __name__ == '__main__':
-  run()
+@app.route('/')
+def index():
+  data = run()
+  return render_template('index.html', generationdata = data)
+
+
+app.run(host='0.0.0.0', port=81, debug=True)
