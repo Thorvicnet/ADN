@@ -1,13 +1,12 @@
-from flask import Flask, render_template, url_for, redirect, request, flash, get_flashed_messages
+from flask import Flask, render_template, url_for, redirect, request, flash
 from modules.DNAGeneration import run
 
 app = Flask(__name__)
 
-app.config.update(
+app.config.update( # used for flash() (no idea y)
   TESTING=True,
   SECRET_KEY='192b9bdd22ab9ed4d12e236c78afcb9a393ec15f71bbf5dc987d54727823bcbf'
 )
-
 
 @app.route('/')
 def home():

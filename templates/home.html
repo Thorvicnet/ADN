@@ -12,31 +12,30 @@
   <h2>Selectionnez votre utilisation : </h2>
   <br>
   <p>  <!-- On sait pas si il a un interet -->
-    <button class="custom-btn btn-7" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Input custom DNA</button>
-  <a class="rand-dna custom-btn btn-7" type="button" href="/results?text=None">Random DNA</a>
+    <button class="custom-btn btn-7" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">ADN Custom</button>
+  <a class="rand-dna custom-btn btn-7" type="button" href="/results?text=None">ADN aléatoire</a>
     <br>
     <br>
-    <!--data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Random DNA</button>-->
   </p>
   <div class="col">
   <div class="col">
   <div class="collapse multi-collapse" id="multiCollapseExample1">
     <div class="card text-center">
       <div class="card-header">
-        syntax (exemple) : ATGACTAC...
+        syntaxe (exemple) : ATGACTAC...
       </div>
       <form method="POST">
           
           <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">DNA strand : </span>
+            <span class="input-group-text" id="basic-addon3">Brin d'ADN : </span>
             <input class="form-control" name="text" id="basic-url" aria-describedby="basic-addon3" type="text">
           </div>
         <div>
-          <input class="button-cust-dna" type="submit" value="Generate DNA">
+          <input class="button-cust-dna" type="submit" value="Générer l'ARN et acide aminé">
         </div>
       </form>
       <div class="card-footer text-muted">
-        If the syntax is incorrect → generate random DNA 
+        L'ADN doit contenir 'TAC' (cordon d'initiation)
       </div>
     </div>
   </div>

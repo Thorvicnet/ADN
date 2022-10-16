@@ -5,3 +5,4 @@
 - button css
 - center stackoverflow
 - diff between redirect and render
+- main.css wrong call in results.html (resulting in 404 in console)
