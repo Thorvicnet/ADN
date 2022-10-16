@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="/static/images/favicon.png" type="image/png">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image" href="/images/favicon.ico">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <script type="text/javascript" src="static/js/main.js"></script>
   <link rel="javascript" href="{{ url_for('static', filename='js/main.js') }}">
@@ -14,16 +14,14 @@
   {% block head %}{% endblock %}
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="title navbar-brand" href="/">ADN generator</a>
+  <a class="title navbar-brand" style="color: #ff7024;" href="/">ADN Generator</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="/">Menu</a>
+      <a class="nav-item nav-link" href="/">Menu</a>
       <a class="nav-item nav-link" href="/results?text=None">Generateur</a>
-      <a class="nav-item nav-link" href="#">Pricing</a>
-      <a class="nav-item nav-link disabled" href="#">Disabled</a>
     </div>
   </div>
 </nav>

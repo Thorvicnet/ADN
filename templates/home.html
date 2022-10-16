@@ -1,25 +1,29 @@
 {% extends 'base.html' %}
 
 {% block head%}
-<title>ADN WebApp</title>
+<title>ADN Generator</title>
 {% endblock%}
 
 {% block body %}
-<div class="menu">
+<div class="menu center">
   <h2>Merci de sélectionner votre utilisation : </h2>
   <br>
   <p>  <!-- On sait pas si il a un interet -->
     <button class="custom-btn btn-7" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Input custom DNA</button>
   <a class="rand-dna custom-btn btn-7" type="button" href="/results?text=None">Random DNA</a>
+    <br>
+    <br>
     <!--data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Random DNA</button>-->
   </p>
   <div class="col">
   <div class="col">
   <div class="collapse multi-collapse" id="multiCollapseExample1">
-    <div class="card card-body">
+    <div class="card card-body center">
       <form method="POST">
           <input class="form-control" name="text">
-          <button class="cust-dna btn" type="button">Générer</button>
+        <div class="button-gen">
+          <input class="cust-dna" type="submit">
+        </div>
       </form>
     </div>
   </div>
