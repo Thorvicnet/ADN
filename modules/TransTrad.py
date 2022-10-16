@@ -13,6 +13,15 @@ def transcription(brin_ADN):
     'T': 'A',
     'A': 'U'
   }
+  brin_liste = []    
+  brin_liste[:0] = brin_ADN
+  #  si le brin d'ADN rentré ne repecte pas le format (A,C,G ou T)
+  for char in brin_liste:
+    if char in toARN.keys():
+      pass
+    else:
+      print("Regénération du brin d'ADN...\n")
+      return False
   # si le codon d'initiation n'a pas été généré, on retourne False
   if 'TAC' in brin_ADN:  # 'TAC' equivalent a AUG avant la transcription
     pass

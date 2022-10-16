@@ -6,6 +6,9 @@
 
 {% block body %}
 <div class="menu center">
+  {% for message in get_flashed_messages() %}
+        <div class="alert alert-danger" role="alert">{{ message }}</div>
+  {% endfor %}
   <h2>Selectionnez votre utilisation : </h2>
   <br>
   <p>  <!-- On sait pas si il a un interet -->
@@ -18,13 +21,23 @@
   <div class="col">
   <div class="col">
   <div class="collapse multi-collapse" id="multiCollapseExample1">
-    <div class="card card-body center">
+    <div class="card text-center">
+      <div class="card-header">
+        syntax (exemple) : ATGACTAC...
+      </div>
       <form method="POST">
-          <input class="form-control" name="text">
-        <div class="button-gen">
-          <input class="cust-dna" type="submit">
+          
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">DNA strand : </span>
+            <input class="form-control" name="text" id="basic-url" aria-describedby="basic-addon3" type="text">
+          </div>
+        <div>
+          <input class="button-cust-dna" type="submit" value="Generate DNA">
         </div>
       </form>
+      <div class="card-footer text-muted">
+        If the syntax is incorrect → generate random DNA 
+      </div>
     </div>
   </div>
 </div>

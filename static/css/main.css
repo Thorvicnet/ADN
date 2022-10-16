@@ -4,6 +4,7 @@
   width: 50%;
   margin-top: 50px;
   padding: 10px;
+  text-align: center;
 }
 
 .rand-dna {
@@ -11,42 +12,57 @@
   text-align: center;
 }
 
+.title-display {
+  margin: 30px;
+  margin: auto;
+  width: 50%;
+  margin-top: 50px;
+  padding: 10px;
+}
+
+.display-box {
+  border-radius: 5px;
+  border:1px solid lightgrey;
+}
+
 .center {
    text-align: center;
 }
 
-.button-gen {
-}
-
-.cust-dna {
+.button-cust-dna {
   margin-top: 20px;
+  margin-bottom: 20px;
   font-size: 20px;
   color: #ff7024;
-  border: none;
   border-radius: 5px;
   height: 40px;
-  /*padding: 15px 32px;*/
+  border:;
+  border-color: #ff7024;
+  border-width: 1px; 
   text-align: center;
   text-decoration: none;
   font-size: 16px;
   transition: 0.5s;
-  width: 100px;
+  width: 400px;
   background-color: white;
 }
 
-.cust-dna:hover {
+.button-cust-dna:hover {
   background-color: #ff7024;
-  border-color: #ff5900;
+  border-color: #ff7024;
   color: white;
   border-radius: 25px;
   text-align: center;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 20px;
+  width: 400px;
   transition: 0.5s;
 }
 
 .title {
   margin: 10px;
+  margin-left: 60px;
+  margin-right: 40px;
 }
 
 /* 7 */

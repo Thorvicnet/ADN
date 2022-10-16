@@ -1,7 +1,12 @@
-from flask import Flask, render_template, url_for, redirect, request
+from flask import Flask, render_template, url_for, redirect, request, flash, get_flashed_messages
 from modules.DNAGeneration import run
 
 app = Flask(__name__)
+
+app.config.update(
+  TESTING=True,
+  SECRET_KEY='192b9bdd22ab9ed4d12e236c78afcb9a393ec15f71bbf5dc987d54727823bcbf'
+)
 
 
 @app.route('/')
@@ -19,7 +24,13 @@ def index_post():
 def results():
   text = request.args['text']
   data = run(text)
-  return render_template('results.html', generationdata=data)
+  if data is None:
+    print('The text did not work')
+    flash('L\'ADN que vous avez rentré est incorrecte...'
+          )  # Est affiché dans home.html
+    return redirect(url_for('home'))
+  else:
+    return render_template('results.html', generationdata=data)
 
 
 if __name__ == '__main__':

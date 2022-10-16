@@ -4,13 +4,33 @@
     <link rel="stylesheet" href="main.css">
 {% endblock %}
 {% block body %}
-  <div class="menu">
+  <div class="title-display">
     <h1>Voici la transcription et traduction : </h1>
-    <hr>
-    <p>ADN : {{ generationdata[0] }}</p>
-    <p>ARNm : {{ generationdata[1] }}</p>
-    <p>ARNm_START : {{ generationdata[2] }}</p>
-    <p>Protéine : {{ generationdata[3] }}</p>
-     <a class="cust-dna custom-btn btn-7" type="button" href="/results?text=None">Regenerer brin d'ADN</a>
   </div>
+  <div class="menu">
+    <div class="display-box border p-2 mb-2">
+      <h1 class="display-6 fw-semibold" style="font-size: 25px;">ADN :</h1>
+      <p>{{ generationdata[0] }}</p>
+    </div>
+    
+    <div class="display-box border p-2 mb-2">
+      <h1 class="display-6 fw-semibold" style="font-size: 25px;">ARN messager :</h1>
+      <p>{{ generationdata[1] }}</p>
+    </div>
+    
+    
+    <div class="display-box border p-2 mb-2">
+      <h1 class="display-6 fw-semibold" style="font-size: 25px;">ARNm_START :</h1>
+      <p>{{ generationdata[2] }}</p>
+    </div>
+    
+   
+    <div class="display-box border p-2 mb-2">
+       <h1 class="display-6 fw-semibold" style="font-size: 25px;">Protéine :</h1>
+      <p>{{ generationdata[3] }}</p>
+    </div>
+    <br>
+    <br>
+     <a class="btn btn-primary btn-lg" type="button" href="/results?text=None" style="background-color:#ff7024;border:none;">Regenerer brin d'ADN</a>
+</div>
 {% endblock %}
