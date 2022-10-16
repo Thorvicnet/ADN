@@ -7,8 +7,8 @@ def logwrite(text):
   logs = f.readlines()
   f.close()
   f = open('adn.log', 'w')
-  text = datetime.fromtimestamp(
-    '\n'+ time.time()).strftime("%d-%m-%Y, %H:%M:%S") + str(text)
+  text = '\n\n' + datetime.fromtimestamp(
+    time.time()).strftime("%d-%m-%Y, %H:%M:%S") + str(text)
   logs.append(text)
   f.writelines(logs)
   f.close()
