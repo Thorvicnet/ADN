@@ -7,6 +7,7 @@ def run(
     brin_ADN=None):  # Aucune idée pourquoi des fois il lance pas avec argument
   if brin_ADN == 'None' or brin_ADN is None:
     brin_ADN = gen_adn(ADN)
+    gen = True
   if transcription(brin_ADN) is False:
     return run()
   else:

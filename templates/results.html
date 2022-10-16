@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <head>
+{% extends 'base.html' %}
+{% block head %}
     <title>Something</title>
     <link rel="stylesheet" href="main.css">
-  </head>
-  <body>
-    <div>
-      <h1>Voici la transcription et traduction : </h1>
-      <p>ADN : {{ generationdata[0] }}</p>
-      <p>ARNm : {{ generationdata[1] }}</p>
-      <p>ARNm_START : {{ generationdata[2] }}</p>
-      <p>Protéine : {{ generationdata[3] }}</p>
-      <a href='/results?text=None'>Regenerate random DNA</a>
-    </div>
-  </body>
-</html>
+{% endblock %}
+{% block body %}
+  <div class="menu">
+    <h1>Voici la transcription et traduction : </h1>
+    <hr>
+    <p>ADN : {{ generationdata[0] }}</p>
+    <p>ARNm : {{ generationdata[1] }}</p>
+    <p>ARNm_START : {{ generationdata[2] }}</p>
+    <p>Protéine : {{ generationdata[3] }}</p>
+     <a class="cust-dna custom-btn btn-7" type="button" href="/results?text=None">Regenerer brin d'ADN</a>
+  </div>
+{% endblock %}
