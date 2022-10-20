@@ -6,3 +6,4 @@
 - center stackoverflow
 - diff between redirect and render
 - main.css wrong call in results.html (resulting in 404 in console)
+- difficulties pour trouver plusieurs acides aminé dans le même ARNm (diff de format)
