@@ -3,6 +3,6 @@
  ✅ - Bug : lorsqu'on rentre un string incorrecte dans 'custom DNA' contenant 'TAC' -> KeyError 
 - Update : renverser le 'custom DNA' (rentrer des proteine et avoir l'ARNm)
 - Update : possibilité de rentrer un autre brin d'ADN une fois sur la page généré au lieu de regénérer aléatoirement
-- Update : possibilitée d'avoir plusieur ARN dans un même ADN
+- Update : possibilitée d'avoir plusieur protéine dans un même ARN
 - Bug : fix les boutons du menu (outline ne fonctionne pas correctement)
 - Bug : 2 requêtes GET donc 2 résultats pour l'ADN à chaque fois, le code est donc executé 2 fois (pareil pour les logs) + tps de calcul sur replit (jsp pk)

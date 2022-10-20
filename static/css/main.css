@@ -1,3 +1,4 @@
+
 .menu {
   margin: 30px;
   margin: auto;
@@ -18,11 +19,6 @@
   width: 50%;
   margin-top: 50px;
   padding: 10px;
-}
-
-.display-box {
-  border-radius: 5px;
-  border:1px solid lightgrey;
 }
 
 .center {
@@ -66,13 +62,18 @@
 }
 
 /* 7 */
+.frame {
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+}
 .custom-btn {
-  width: 40%;
-  height: 5%;
+  width: 430px;
+  height: 40px;
   color: #fff;
   border-radius: 5px;
   padding: 10px 25px;
-  font-family: Arial, sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 500;
   background: transparent;
   cursor: pointer;
@@ -85,7 +86,7 @@
   outline: none;
 }
 .btn-7 {
-background: linear-gradient(0deg, rgba(255,151,0,1) 0%, rgba(251,75,2,1) 100%);
+  background: linear-gradient(0deg, rgba(255,151,0,1) 0%, rgba(251,75,2,1) 100%);
   line-height: 42px;
   padding: 0;
   border: none;
@@ -157,5 +158,4 @@ background: linear-gradient(0deg, rgba(255,151,0,1) 0%, rgba(251,75,2,1) 100%);
   width: 100%;
 }
 
-
-
+/* Test */

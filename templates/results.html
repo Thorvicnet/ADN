@@ -6,30 +6,30 @@
   <div class="title-display">
     <h1>Voici la transcription et traduction : </h1>
   </div>
-  <div class="menu">
-    <div class="container display-box border p-2 mb-2">
+  <div class="menu" style="margin-right:600px;">
+    <div class="container" style="border:thick double #ff7024;width:1200px;">
       <h1 class="display-6 fw-semibold" style="font-size: 25px;">ADN :</h1>
       <p>{{ generationdata[0] }}</p>
     </div>
     
-    <div class="display-box border p-2 mb-2">
+    <div class="container" style="border:thick double #ff7024;width:1200px;">
       <h1 class="display-6 fw-semibold" style="font-size: 25px;">ARN messager :</h1>
       <p>{{ generationdata[1] }}</p>
     </div>
     
-    
-    <div class="display-box border p-2 mb-2">
+    <div class="container" style="border:thick double #ff7024;width:1200px;">
       <h1 class="display-6 fw-semibold" style="font-size: 25px;">ARNm_START :</h1>
       <p>{{ generationdata[2] }}</p>
     </div>
     
-   
-    <div class="display-box border p-2 mb-2">
+    <div class="container" style="border:thick double #ff7024;width:1200px;">
        <h1 class="display-6 fw-semibold" style="font-size: 25px;">Protéine :</h1>
       <p>{{ generationdata[3] }}</p>
     </div>
     <br>
-    <br>
+
+</div>
+<div class="menu">
      <a class="btn btn-primary btn-lg" type="button" href="/results?text=None" style="background-color:#ff7024;border:none;">Regenerer brin d'ADN</a>
 </div>
 {% endblock %}

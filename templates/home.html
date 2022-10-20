@@ -2,6 +2,7 @@
 
 {% block head%}
 <title>ADN Generator</title>
+
 {% endblock%}
 
 {% block body %}
@@ -12,8 +13,9 @@
   <h2>Selectionnez votre utilisation : </h2>
   <br>
   <p>  <!-- On sait pas si il a un interet -->
-    <button class="custom-btn btn-7" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">ADN Custom</button>
-  <a class="rand-dna custom-btn btn-7" type="button" href="/results?text=None">ADN aléatoire</a>
+    <div class="frame">
+    <button class="custom-btn btn-7" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><span>ADN custom</span></button>
+  <a class="rand-dna custom-btn btn-7" type="button" href="/results?text=None"><span>ADN aléatoire</span></a></div>
     <br>
     <br>
   </p>
@@ -35,7 +37,7 @@
         </div>
       </form>
       <div class="card-footer text-muted">
-        L'ADN doit contenir 'TAC' (cordon d'initiation)
+        L'ADN doit contenir 'TAC' (codon d'initiation)
       </div>
     </div>
   </div>

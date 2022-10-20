@@ -5,7 +5,7 @@ ADN = ['A', 'T', 'C', 'G']
 
 
 def run(
-    brin_ADN=None):  # Aucune idée pourquoi des fois il lance pas avec argument
+    brin_ADN=None):  # Aucune idée pourquoi des fois il lance sans argument
   given = False
   if brin_ADN == 'None' or brin_ADN is None:
     brin_ADN = gen_adn(ADN)

@@ -3,7 +3,7 @@ from DictionaryGEN import trad2GEN # Sinon ce code est impossible à lire
 
 """
 ERRORS LIST:
-1 = erreur dans RNA_GEN() : manque un cordon d'initiation ou/et un cordon stop
+1 = erreur dans RNA_GEN() : manque un codon d'initiation ou/et un codon stop
 2 = erreur dans DNA_RNA() : le format de l'ADN entré n'existe pas
 3 = erreur dans RNA_DNA() : le format de l'ARNm entré n'existe pas
 """
@@ -41,8 +41,8 @@ def RNA_DNA(RNA):
 
 def RNA_GEN(staticRNA):
   RNAlist = []
-  for align in range(3): # Cherche pour chaque alignement, par exemple "AAUGA" aura une rechere sur ['AAU','GA'], ['AUG','A'] et ['UGA']
-    RNA = staticRNA[align:] # on décale en supprimant les premières valeurs
+  for frame in range(3): # Cherche pour chaque alignement, par exemple "AAUGA" aura une recherche sur ['AAU','GA'], ['AUG','A'] et ['UGA']
+    RNA = staticRNA[frame:] # on décale en supprimant les premières valeurs
     RNA = tochunk(RNA)
     dict = trad2GEN()
     RNA = [dict[x] for x in RNA]
