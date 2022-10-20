@@ -12,15 +12,11 @@
   {% endfor %}
   <h2>Selectionnez votre utilisation : </h2>
   <br>
-  <p>  <!-- On sait pas si il a un interet -->
     <div class="frame">
     <button class="custom-btn btn-7" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><span>ADN custom</span></button>
-  <a class="rand-dna custom-btn btn-7" type="button" href="/results?text=None"><span>ADN aléatoire</span></a></div>
+  <a class="rand-dna custom-btn btn-7" type="button" href="/results?input=None&type=DNA"><span>ADN aléatoire</span></a></div>
     <br>
     <br>
-  </p>
-  <div class="col">
-  <div class="col">
   <div class="collapse multi-collapse" id="multiCollapseExample1">
     <div class="card text-center">
       <div class="card-header">
@@ -29,7 +25,7 @@
       <form method="POST">
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon3">Brin d'ADN : </span>
-            <input class="form-control" name="text" id="basic-url" aria-describedby="basic-addon3" type="text">
+            <input class="form-control" name="DNA" id="basic-url" aria-describedby="basic-addon3" type="text">
           </div>
         <div>
           <input class="button-cust-dna" type="submit" value="Générer l'ARN et acide aminé">
@@ -42,5 +38,36 @@
   </div>
 </div>
 </div>
+<!-- other buttons -->
+  
+<p>
+    <button class="custom-btn btn-7" data-bs-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false" aria-controls="multiCollapseExample3"><span>ARNm custom</span></button>
+  <a class="rand-dna custom-btn btn-7" type="button" href="/results?input=None&type=RNA"><span>ARNm aléatoire</span></a>
+    <br>
+    <br>
+  </p>
+  <div class="col">
+  <div class="col">
+  <div class="collapse multi-collapse" id="multiCollapseExample3">
+    <div class="card text-center">
+      <div class="card-header">
+        syntaxe (exemple) : AUG...
+      </div>
+      <form method="POST">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">Suite d'ARNm : </span>
+            <input class="form-control" name="RNA" id="basic-url" aria-describedby="basic-addon3" type="text">
+          </div>
+        <div>
+          <input class="button-cust-dna" type="submit" value="Générer l'ADN et acide aminé">
+        </div>
+      </form>
+      <div class="card-footer text-muted">
+        L'ADN doit contenir 'AUG' (codon d'initiation)
+      </div>
+    </div>
+  </div>
+</div>
 
+  
 {% endblock %}

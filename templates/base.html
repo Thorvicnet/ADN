@@ -4,7 +4,7 @@
   <link rel="icon" href="/static/images/favicon.png" type="image/png">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <script type="text/javascript" src="static/js/main.js"></script>
   <link rel="javascript" href="{{ url_for('static', filename='js/main.js') }}">
@@ -24,11 +24,35 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="/">Menu</a>
-      <a class="nav-item nav-link" href="/results?text=None">Generateur</a>
+      <a class="nav-item nav-link" href="/results?input=None&type=DNA">Generateur</a>
     </div>
   </div>
 </nav>
-<body>
-    {% block body %}{% endblock %}
+<body style="background-color: #a7b7c3;">
+    
+   <header class="site-header">
+      
+    </header>
+  <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% block body %}{% endblock %}
+        </div>
+        <div class="col-md-3" style="border:1px;padding-top:20px;">
+          <div class="content-section">
+            <h3>Sidebar</h3>
+            <p class='text-muted'>Options supplémentaires
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-light">Historique</li>
+                <li class="list-group-item list-group-item-light">Représentation tridimensionelle</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
 </body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </html>
