@@ -1,7 +1,9 @@
 from flask import Flask, render_template, url_for, redirect, request, flash
 from modules.TransTrad import autoData
+from flask_mobility import Mobility
 
 app = Flask(__name__)
+Mobility(app)
 
 app.config.update(  # used for flash() (no idea y)
   TESTING=True,
@@ -11,7 +13,10 @@ app.config.update(  # used for flash() (no idea y)
 
 @app.route('/', methods=['GET'])
 def home():
-  return render_template('home.html')
+  if request.MOBILE == True:  # Si l'utilisateur est sur téléphone
+    return render_template('mobile.html')
+  else:
+    return render_template('home.html')
 
 
 @app.route('/', methods=['POST'])
@@ -33,7 +38,7 @@ def results():
   text = request.args['input']
   type = request.args['type']
   data = autoData(text, type)
-  if data is None:
+  if data == None or 2 in data or 3 in data:  # Si l'ARN ou l'ADN rentré est incorrecte ou autre probleme, NE PAS CHANGER l'ordre des conditions sinon erreur ¯\_(ツ)_/¯
     print('The text did not work')
     flash('Vous n\'avez pas rentré une valeur correcte...'
           )  # Est affiché dans home.html

@@ -45,6 +45,17 @@ async = ["asgiref (>=3.2)"]
 dotenv = ["python-dotenv"]
 
 [[package]]
+name = "flask-mobility"
+version = "1.1.0"
+description = "A Flask extension to simplify building mobile-friendly sites."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Flask = "*"
+
+[[package]]
 name = "importlib-metadata"
 version = "5.0.0"
 description = "Read metadata from Python packages"
@@ -119,13 +130,14 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "flake8 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "11c2de8d65ce687b2a79e5d8b5efcb31080e78fed530deba6455016ce149faf4"
+content-hash = "933263f1fcd6431ffd46bf3e8621a9a210dbb58ce4ab1eb941c7905e07564668"
 
 [metadata.files]
 click = []
 colorama = []
 datetime3 = []
 flask = []
+flask-mobility = []
 importlib-metadata = []
 itsdangerous = []
 jinja2 = []

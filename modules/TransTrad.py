@@ -13,6 +13,12 @@ def tochunk(m):
   return [(m[x] + m[x + 1] + m[x + 2]) for x in range(0, len(m) - 2, 3)]
 
 
+def stringifyGEN(
+  GEN
+):  # Permet d'enlever la liste pour la remplacer par les protéines séparées par des virgules
+  return ", ".join(GEN)
+
+
 def randomDNA():
   DNA = ['A', 'T', 'C', 'G']
   return "".join([DNA[randint(0, len(DNA) - 1)] for _ in range(100)])
@@ -70,17 +76,21 @@ def DNA_GEN(DNA):
 
 
 def autoData(value, type):
-  if type == 'DNA':
-    DNA = value
-    if DNA == 'None':
-      DNA = randomDNA()
-    data = [DNA, DNA_RNA(DNA), DNA_GEN(DNA)]
-  elif type == 'RNA':
-    RNA = value
-    if RNA == 'None':
-      RNA = randomRNA()
-    data = [RNA_DNA(RNA), RNA, RNA_GEN(RNA)]
-  if 1 in data:  # Si la traduction de l'ARN est impossible
-    data[2] = 'Aucune protéine trouvée'
-  logwrite(data)
+  try:
+    if type == 'DNA':
+      DNA = value
+      if DNA == 'None':
+        DNA = randomDNA()
+      data = [DNA, DNA_RNA(DNA), stringifyGEN(DNA_GEN(DNA))]
+    elif type == 'RNA':
+      RNA = value
+      if RNA == 'None':
+        RNA = randomRNA()
+      data = [RNA_DNA(RNA), RNA, stringifyGEN(RNA_GEN(RNA))]
+    if 1 in data:  # Si la traduction de l'ARN est impossible
+      data[2] = 'Aucune protéine trouvée'
+    logwrite(data)
+  except:
+    logwrite('Did not work')
+    data = None
   return data
