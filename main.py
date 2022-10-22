@@ -1,13 +1,14 @@
 from flask import Flask, render_template, url_for, redirect, request, flash
 from modules.TransTrad import autoData
 from flask_mobility import Mobility
+from secrets import token_hex
 
 app = Flask(__name__)
 Mobility(app)  # Pour détecter les mobiles
 
 app.config.update(  # used for flash() (no idea y)
   TESTING=True,
-  SECRET_KEY='192b9bdd22ab9ed4d12e236c78afcb9a393ec15f71bbf5dc987d54727823bcbf'
+  SECRET_KEY=token_hex(20) # aléatoire pour ne pas avoir le secret dans le github
 )
 
 
