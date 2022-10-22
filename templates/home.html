@@ -31,13 +31,13 @@
 {% endblock %}
 
 {% block body %}
-<div class="menu ml-auto mr-auto" style="border:none;">
-  {% for message in get_flashed_messages() %}
-        <div class="alert alert-danger" role="alert">{{ message }}</div>
-  {% endfor %}
+<div class="menu ml-auto mr-auto">
   <h2>Selectionnez votre utilisation : </h2>
   <br>
-    <div class="container">
+  <div class="container">
+    {% for message in get_flashed_messages() %}
+      <div class="alert alert-danger" role="alert">{{ message }}</div>
+    {% endfor %}
     <button style="margin-right:20px;" class="custom-btn btn-7" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><span>ADN custom</span></button>
   <a class="rand-dna custom-btn btn-7" type="button" href="/results?input=None&type=DNA"><span>ADN aléatoire</span></a></div>
     <br>

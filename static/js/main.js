@@ -10,12 +10,12 @@ function backgroundcanvas(mouseX, mouseY) {
     for (let x = 0; x<canvas.width; x+=space) {
         for (let y = 0; y<canvas.height; y+=space) {
             let distance = Math.sqrt((mouseX-x)**2 + (mouseY-y)**2);
-            if (distance > 125) {
+            /*if (distance > 125) {
                 ctx.beginPath();
                 ctx.arc(x, y, 1, 0, 2 * Math.PI, true); // on trace les points (cercle) normalement
                 ctx.stroke();
-            }
-            else if (distance < 20) { // les points partent trop loin après calcul (on les tracent pas)
+            }*/
+            if (distance < 20) { // les points partent trop loin après calcul (on les tracent pas)
                 continue
             }
             else {

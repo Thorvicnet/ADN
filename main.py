@@ -41,7 +41,7 @@ def results():
   data = autoData(text, type)
   if data is None or 2 in data or 3 in data:  # Si l'ARN ou l'ADN rentré est incorrecte ou autre probleme, NE PAS CHANGER l'ordre des conditions sinon erreur ¯\_(ツ)_/¯
     print('The text did not work')
-    flash('Vous n\'avez pas rentré une valeur correcte...'
+    flash('Vous avez rentré une valeur incorrecte...'
           )  # Est affiché dans home.html
     return redirect(url_for('home'))
   else:
