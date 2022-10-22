@@ -3,15 +3,36 @@ function backgroundcanvas(mouseX, mouseY) {
     canvas.width = window.innerWidth; // mettre à la taille de la fenêtre
     canvas.height = window.innerHeight;
     var bounds = canvas.getBoundingClientRect();
-    mouseX = mouseX - bounds.left - scrollX; // corriger la position de la souris par rapport au scroll et bords
-    mouseY = mouseY - bounds.top - scrollY;
+    mouseX = mouseX - bounds.left; // corriger la position de la souris par rapport aux bords
+    mouseY = mouseY - bounds.top;
     let space = 45; // espacement entre les points
     const ctx = canvas.getContext("2d");
     for (let x = 0; x<canvas.width; x+=space) {
         for (let y = 0; y<canvas.height; y+=space) {
-            if (Math.sqrt((mouseX-x)**2 + (mouseY-y)**2) > 50) {
+            let distance = Math.sqrt((mouseX-x)**2 + (mouseY-y)**2);
+            if (distance > 100) {
                 ctx.beginPath();
-                ctx.arc(x, y, 1, 0, 2 * Math.PI, true);
+                ctx.arc(x, y, 1, 0, 2 * Math.PI, true); // ontrace les pints (cercle)
+                ctx.stroke();
+            }
+            else if (distance < 20) {
+                continue
+            }
+            else {
+                if (x - mouseX > 0) {
+                    newx = x + (mouseX/distance);
+                }
+                if (x - mouseX < 0) {
+                    newx = x - (mouseX/distance);
+                }
+                if (y - mouseY > 0) {
+                    newy = y + (mouseY/distance);
+                }
+                if (y - mouseY < 0) {
+                    newy = y - (mouseY/distance);
+                }
+                ctx.beginPath();
+                ctx.arc(newx, newy, 1, 0, 2 * Math.PI, true); // ontrace les pints (cercle)
                 ctx.stroke();
             }
         }
