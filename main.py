@@ -3,7 +3,7 @@ from modules.TransTrad import autoData
 from flask_mobility import Mobility
 
 app = Flask(__name__)
-Mobility(app)
+Mobility(app)  # Pour détecter les mobiles
 
 app.config.update(  # used for flash() (no idea y)
   TESTING=True,
@@ -47,5 +47,12 @@ def results():
     return render_template('results.html', generationdata=data)
 
 
+@app.route('/logs')
+def logs():
+  with open('adn.log', 'r') as f:
+    logs = "".join(f.readlines()[-30:])
+  return render_template('logs.html', logs=logs)
+
+
 if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=81, debug=True)
+  app.run(host='0.0.0.0', port=8443, debug=True)

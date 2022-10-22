@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "adn"
+name = "dna generator"
 version = "0.1.0"
 description = ""
-authors = ["Replit user <<>>"]
+authors = [""]
 
 [tool.poetry.dependencies]
 python = "^3.8"

@@ -1,6 +1,6 @@
 from random import randint
-from .DictionaryGEN import trad2GEN  # Sinon ce code est impossible à lire
-from .Logsave import logwrite
+import modules.DictionaryGEN as dictGEN  # Sinon ce code est impossible à lire
+import modules.Logsave as log
 """
 ERRORS LIST:
 1 = erreur dans RNA_GEN() : manque un codon d'initiation ou/et un codon stop
@@ -16,7 +16,10 @@ def tochunk(m):
 def stringifyGEN(
   GEN
 ):  # Permet d'enlever la liste pour la remplacer par les protéines séparées par des virgules
-  return ", ".join(GEN)
+  try:
+    return ", ".join(GEN)
+  except:  # Si GEN est vide
+    return GEN
 
 
 def randomDNA():
@@ -52,7 +55,7 @@ def RNA_GEN(staticRNA):
   ):  # Cherche pour chaque alignement, par exemple "AAUGA" aura une recherche sur ['AAU','GA'], ['AUG','A'] et ['UGA']
     RNA = staticRNA[frame:]  # on décale en supprimant les premières valeurs
     RNA = tochunk(RNA)
-    dict = trad2GEN()
+    dict = dictGEN.trad2GEN()
     RNA = [dict[x] for x in RNA]
     startPOS = [x for x in range(len(RNA)) if RNA[x] == 'Met']
     endPOS = [x for x in range(len(RNA)) if RNA[x] == 'STO']
@@ -89,8 +92,8 @@ def autoData(value, type):
       data = [RNA_DNA(RNA), RNA, stringifyGEN(RNA_GEN(RNA))]
     if 1 in data:  # Si la traduction de l'ARN est impossible
       data[2] = 'Aucune protéine trouvée'
-    logwrite(data)
+    log.logwrite(data)
   except:
-    logwrite('Did not work')
+    log.logwrite('Did not work')
     data = None
   return data

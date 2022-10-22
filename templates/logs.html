@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<title>ADN Generator</title>
+
+{% endblock%}
+{% block body %}
+<h2>Voici les 15 dernières générations : </h2>
+<div>
+  <pre class='logs'>
+    {{ logs }}
+  </pre>
+</div>
+{% endblock%}
