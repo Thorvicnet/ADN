@@ -38,7 +38,7 @@ def results():
   text = request.args['input']
   type = request.args['type']
   data = autoData(text, type)
-  if data == None or 2 in data or 3 in data:  # Si l'ARN ou l'ADN rentré est incorrecte ou autre probleme, NE PAS CHANGER l'ordre des conditions sinon erreur ¯\_(ツ)_/¯
+  if data is None or 2 in data or 3 in data:  # Si l'ARN ou l'ADN rentré est incorrecte ou autre probleme, NE PAS CHANGER l'ordre des conditions sinon erreur ¯\_(ツ)_/¯
     print('The text did not work')
     flash('Vous n\'avez pas rentré une valeur correcte...'
           )  # Est affiché dans home.html
