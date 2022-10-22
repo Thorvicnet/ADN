@@ -15,3 +15,5 @@ def logwrite(text):
     f.close()
   except: # Si le fichier n'existe pas : le créer ("x")
     f = open("adn.log","x")
+    f.close()
+    logwrite(text)
