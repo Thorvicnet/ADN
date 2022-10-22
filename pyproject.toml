@@ -1,12 +1,14 @@
 [tool.poetry]
-name = "adn"
+name = "dna generator"
 version = "0.1.0"
 description = ""
-authors = ["Replit user <<>>"]
+authors = [""]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 Flask = "^2.2.2"
+datetime3 = "^3.8.0"
+Flask-Mobility = "^1.1.0"
 
 [tool.poetry.dev-dependencies]
 

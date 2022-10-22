@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block head %}
+    <title>ADN Generator</title>
+{% endblock %}
+{% block body %}
+  <div class="container" style="padding-top:30px;padding-bottom:20px;width: 90%;border:solid red;">
+    <h1>Voici la transcription et traduction : </h1>
+  </div>
+  <div class="container text-center " style="border: solid yellow;">
+    <div class="row d-inline-flex p-2" style="border:solid blue;">
+      <div class="d-flex flex-row mb-3">
+        <div class="p-2">ADN</div>
+        <p>{{ generationdata[0] }}</p>
+      </div>
+      <p class="lead">ARNm :</p>
+      <div class="col">
+        <p>{{ generationdata[1] }}</p>
+      </div>
+      <p class="lead">Protéine(s) :</p>
+      <div class="col">
+        <p>{{ generationdata[2] }}</p>
+      </div>
+    </div>
+  <!--<div class="menu" style="margin-right:600px;">
+    <div class="container" style="border:thick double #ff7024;width:1200px;">
+      <h1 class="display-6 fw-semibold" style="font-size: 25px;">ADN :</h1>
+      <p>{{ generationdata[0] }}</p>
+    </div>
+    
+    <div class="container" style="border:thick double #ff7024;width:1200px;">
+      <h1 class="display-6 fw-semibold" style="font-size: 25px;">ARN messager :</h1>
+      <p>{{ generationdata[1] }}</p>
+    </div>
+    
+    <div class="container" style="border:thick double #ff7024;width:1200px;">
+       <h1 class="display-6 fw-semibold" style="font-size: 25px;">Protéine(s) :</h1>
+      <p>{{ generationdata[2] }}</p>
+    </div>
+    <br>
+
+  </div> -->
+
+     <a class="rand-dna custom-btn btn-7" type="button" href="/results?input=None&type=DNA"><span>Regenerer brin d'ADN</span></a></div>
+</div>
+{% endblock %}
