@@ -23,12 +23,12 @@ def home():
 @app.route('/', methods=['POST'])
 def index_post():
   try:
-    DNA = request.form['DNA']
+    DNA = request.form['DNA'].upper()
     return redirect(url_for('results', input=DNA, type='DNA'))
   except:
     pass
   try:
-    RNA = request.form['RNA']
+    RNA = request.form['RNA'].upper()
     return redirect(url_for('results', input=RNA, type='RNA'))
   except:
     pass
