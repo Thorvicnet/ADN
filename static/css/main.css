@@ -20,7 +20,6 @@
   background-color: none;
   transition: 0.3s;
 }
-
 .copy-btn:hover{
   color: white;
   border: #0d6efd;
@@ -61,7 +60,6 @@
   width: 400px;
   background-color: white;
 }
-
 .button-cust-dna:hover {
   background-color: #ff7024;
   border-color: #ff7024;

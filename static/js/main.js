@@ -51,12 +51,12 @@ window.addEventListener("DOMContentLoaded", function(){ // on attend que le DOM 
 
 // ne fonctionne pas encore car value est défini après que la fonction soit appelé
 function copy_gendata(){
-  var val = null
+  var val = null  // en attendant
    // On copie
   navigator.clipboard.writeText(val);
 
   // Alerter l'utilisateur
-  alert("Donnée de génération copié : " + val);
+  alert("Donnée de génération copié : " + data[0]);
 }
  function test() {
    alert('test')

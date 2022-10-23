@@ -11,7 +11,7 @@ app.config.update(  # used for flash() (no idea y)
   SECRET_KEY=token_hex(20) # aléatoire pour ne pas avoir le secret dans le github
 )
 
-
+@app.route('/home', methods=['GET'])
 @app.route('/', methods=['GET'])
 def home():
   if request.MOBILE == True:  # Si l'utilisateur est sur téléphone
