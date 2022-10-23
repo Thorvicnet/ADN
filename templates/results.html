@@ -3,24 +3,52 @@
     <title>ADN Generator</title>
 {% endblock %}
 
+{% block dna_anim %}
+<div class="dna">
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+</div>
+{% endblock %}
+
 {% block body %}
 <div class="col-md-6" style="margin-top: 50px; margin-right: 50px;">
   <div class="list-group">
     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">ADN</h5>
+        <small><button class="copy-btn btn-sm" onclick="copy_gendata()">Copier</button></small>
       </div>
-      <p class="mb-1" style="word-wrap:break-word;">{{ generationdata[0] }}</p>
+      <p class="mb-1" style="word-wrap:break-word;" value="{{ generationdata[0] }}" id="gendata">{{ generationdata[0] }}</p>
     </a>
     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">ARN</h5>
+        <small><button class="copy-btn btn-sm" onclick="test()">Copier</button></small>
       </div>
       <p class="mb-1" style="word-wrap:break-word;">{{ generationdata[1] }}</p>
     </a>
     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">Protéine</h5>
+        <small><button class="copy-btn btn-sm">Copier</button></small>
       </div>
       <p class="mb-1" style="word-wrap:break-word;">{{ generationdata[2] }}</p>
     </a>
@@ -30,3 +58,4 @@
   <a class="rand-dna custom-btn btn-7" type="button" href="/results?input=None&type=DNA" style="display:block; width: 100%;cursor: pointer; text-align: center;"><span>Regenerer brin d'ADN</span></a>
 </div>
 {% endblock %}
+ <a class="btn btn-outline-dark btn-sm">Retour</a>

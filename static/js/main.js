@@ -48,3 +48,16 @@ window.addEventListener("DOMContentLoaded", function(){ // on attend que le DOM 
         //console.log(`Mouse X: ${event.clientX}, Mouse Y: ${event.clientY}`); // pour debug (fait lagger)
     });
 });
+
+// ne fonctionne pas encore car value est défini après que la fonction soit appelé
+function copy_gendata(){
+  var val = null
+   // On copie
+  navigator.clipboard.writeText(val);
+
+  // Alerter l'utilisateur
+  alert("Donnée de génération copié : " + val);
+}
+ function test() {
+   alert('test')
+ }
