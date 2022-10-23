@@ -2,56 +2,31 @@
 {% block head %}
     <title>ADN Generator</title>
 {% endblock %}
+
 {% block body %}
-  <br>
-  <br>
-  <div class="col-md-9">
-    <div class="card" style="width: 150%;" style="display:table;">
-      <div class="card-header" style="display:table;">
-        <p class="display-4 bold" style="font-size: 30px;">Voici la transcription et traduction :</p> 
+<div class="col-md-6" style="margin-top: 50px; margin-right: 50px;">
+  <div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">ADN</h5>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item" style="display: inline-block;">
-          ADN
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1" style="font-size: 15px;display: inline-block;">{{ generationdata[0] }}</span>
-          </div>
-          
-        </li>
-        <li class="list-group-item" style="display: inline-block;">
-          ARN
-          <div class="input-group-prepend" style="display:table;">
-            <span class="input-group-text" id="basic-addon1" style="font-size: 15px;">{{ generationdata[1] }}</span>
-          </div>
-        </li>
-        <li class="list-group-item" style="display: table;width: fit-content; ">
-          Protéine
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1" style="font-size: 15px;display: inline-block;width: fit-content; ">{{ generationdata[2] }}</span>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <br>
-  <!--<div class="menu" style="margin-right:600px;">
-    <div class="container" style="border:thick double #ff7024;width:1200px;">
-      <h1 class="display-6 fw-semibold" style="font-size: 25px;">ADN :</h1>
-      <p>{{ generationdata[0] }}</p>
-    </div>
-    
-    <div class="container" style="border:thick double #ff7024;width:1200px;">
-      <h1 class="display-6 fw-semibold" style="font-size: 25px;">ARN messager :</h1>
-      <p>{{ generationdata[1] }}</p>
-    </div>
-    
-    <div class="container" style="border:thick double #ff7024;width:1200px;">
-       <h1 class="display-6 fw-semibold" style="font-size: 25px;">Protéine(s) :</h1>
-      <p>{{ generationdata[2] }}</p>
-    </div>
-    <br>
-
-  </div> -->
-
-     <a class="rand-dna custom-btn btn-7" type="button" href="/results?input=None&type=DNA" style="display:block; width: 100%;cursor: pointer; text-align: center;margin-left:34px;"><span>Regenerer brin d'ADN</span></a></div>
+      <p class="mb-1" style="word-wrap:break-word;">{{ generationdata[0] }}</p>
+    </a>
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">ARN</h5>
+      </div>
+      <p class="mb-1" style="word-wrap:break-word;">{{ generationdata[1] }}</p>
+    </a>
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Protéine</h5>
+      </div>
+      <p class="mb-1" style="word-wrap:break-word;">{{ generationdata[2] }}</p>
+    </a>
+  </div>
+  <br>
+  <br>
+  <a class="rand-dna custom-btn btn-7" type="button" href="/results?input=None&type=DNA" style="display:block; width: 100%;cursor: pointer; text-align: center;"><span>Regenerer brin d'ADN</span></a>
 </div>
 {% endblock %}

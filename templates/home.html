@@ -31,77 +31,76 @@
 {% endblock %}
 
 {% block body %}
-<div class="menu ml-auto mr-auto">
-  <h2>Selectionnez votre utilisation : </h2>
-  <br>
-  <div class="container">
-    {% for message in get_flashed_messages() %}
-      <div class="alert alert-danger" role="alert">{{ message }}</div>
-    {% endfor %}
-    <button style="margin-right:20px;" class="custom-btn btn-7" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><span>ADN custom</span></button>
-  <a class="rand-dna custom-btn btn-7" type="button" href="/results?input=None&type=DNA"><span>ADN aléatoire</span></a></div>
+<div class="col-md-6">
+  <div class="menu ml-auto mr-auto">
+    <h2>Selectionnez votre utilisation : </h2>
     <br>
-    <br>
-  <div class="collapse multi-collapse" id="multiCollapseExample1">
     <div class="container">
-    <div class="card text-center">
-      <div class="card-header">
-        syntaxe (exemple) : ATGACTAC...
-      </div>
-      
-      <form method="POST">
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">Brin d'ADN : </span>
-            <input class="form-control" name="DNA" id="basic-url" aria-describedby="basic-addon3" type="text">
-          </div>
-        <div>
-          <input class="button-cust-dna" type="submit" value="Générer l'ARN et acide aminé">
-          
-        </div>
-      </form>
-      <div class="card-footer text-muted">
-        L'ADN doit contenir 'TAC' (codon d'initiation)
-      </div>
-      </div>
-    </div>
-    <br>
-  </div>
-
-
-  <!-- other buttons -->
-    <div class="container">
-        <button style="margin-right:20px;" class="custom-btn btn-7" data-bs-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false" aria-controls="multiCollapseExample3"><span>ARNm custom</span></button>
-      <a class="rand-dna custom-btn btn-7" type="button" href="/results?input=None&type=RNA"><span>ARNm aléatoire</span></a>
-    
+      {% for message in get_flashed_messages() %}
+        <div class="alert alert-danger" role="alert">{{ message }}</div>
+      {% endfor %}
+      <button style="margin-right:20px;" class="custom-btn btn-7" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><span>ADN custom</span></button>
+    <a class="rand-dna custom-btn btn-7" type="button" href="/results?input=None&type=DNA"><span>ADN aléatoire</span></a></div>
       <br>
       <br>
-    <div class="col">
-    <div class="col">
-    <div class="collapse multi-collapse" id="multiCollapseExample3">
+    <div class="collapse multi-collapse" id="multiCollapseExample1">
+      <div class="container">
       <div class="card text-center">
         <div class="card-header">
-          syntaxe (exemple) : AUG...
+          syntaxe (exemple) : ATGACTAC...
         </div>
+        
         <form method="POST">
             <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon3">Suite d'ARNm : </span>
-              <input class="form-control" name="RNA" id="basic-url" aria-describedby="basic-addon3" type="text">
+              <span class="input-group-text" id="basic-addon3">Brin d'ADN : </span>
+              <input class="form-control" name="DNA" id="basic-url" aria-describedby="basic-addon3" type="text">
             </div>
           <div>
-            <input class="button-cust-dna" type="submit" value="Générer l'ADN et acide aminé">
+            <input class="button-cust-dna" type="submit" value="Générer l'ARN et acide aminé">
+            
           </div>
         </form>
         <div class="card-footer text-muted">
-          L'ADN doit contenir 'AUG' (codon d'initiation)
+          L'ADN doit contenir 'TAC' (codon d'initiation)
+        </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  
+  
+    <!-- other buttons -->
+      <div class="container">
+          <button style="margin-right:20px;" class="custom-btn btn-7" data-bs-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false" aria-controls="multiCollapseExample3"><span>ARNm custom</span></button>
+        <a class="rand-dna custom-btn btn-7" type="button" href="/results?input=None&type=RNA"><span>ARNm aléatoire</span></a>
+      
+        <br>
+        <br>
+      <div class="col">
+      <div class="col">
+      <div class="collapse multi-collapse" id="multiCollapseExample3">
+        <div class="card text-center">
+          <div class="card-header">
+            syntaxe (exemple) : AUG...
+          </div>
+          <form method="POST">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon3">Suite d'ARNm : </span>
+                <input class="form-control" name="RNA" id="basic-url" aria-describedby="basic-addon3" type="text">
+              </div>
+            <div>
+              <input class="button-cust-dna" type="submit" value="Générer l'ADN et acide aminé">
+            </div>
+          </form>
+          <div class="card-footer text-muted">
+            L'ADN doit contenir 'AUG' (codon d'initiation)
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
-
-  <!-- c'est plus stylé -->
-  
+  </div>
+  </div>
 </div>
 
 
