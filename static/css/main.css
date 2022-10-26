@@ -361,7 +361,6 @@ body {
 .ele:nth-of-type(20) {
   animation-delay: -3s;
 }
-
 @keyframes run {
   to {
     transform: none;

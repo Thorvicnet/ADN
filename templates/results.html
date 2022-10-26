@@ -6,7 +6,7 @@
 
 {% block dna_anim %}
 <div class="col-md-3 mt-5" style="margin-left: 15px; width: 60%;padding-left: 30px;position: relative;z-index: 100;text-align: right;">
-  <a class="btn btn-dark" style="width: 50%;" href="/home">Retour</a>
+  <a class="btn btn-dark" style="width: 50%;" href="/">Retour</a>
 </div>
 <div class="dna">
   <div class="ele"></div>
@@ -40,23 +40,23 @@
     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">ADN</h5>
-        <small><button class="copy-btn btn-sm" onclick="copy_gendata()">Copier</button></small>
+        <small><button class="copy-btn btn-sm" onclick="copy_gendata('DNAtext')">Copier</button></small>
       </div>
-      <p class="mb-1" style="word-wrap:break-word;" value="{{ generationdata[0] }}" id="gendata">{{ generationdata[0] }}</p>
+      <p class="mb-1 DNAtext" style="word-wrap:break-word;" id="gendata">{{ generationdata[0] }}</p>
     </a>
     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">ARN</h5>
-        <small><button class="copy-btn btn-sm" onclick="test()">Copier</button></small>
+        <small><button class="copy-btn btn-sm" onclick="copy_gendata('RNAtext')">Copier</button></small>
       </div>
-      <p class="mb-1" style="word-wrap:break-word;">{{ generationdata[1] }}</p>
+      <p class="mb-1 RNAtext" style="word-wrap:break-word;" id="gendata">{{ generationdata[1] }}</p>
     </a>
     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">Protéine</h5>
-        <small><button class="copy-btn btn-sm">Copier</button></small>
+        <h5 class="mb-1">Protéine(s)</h5>
+        <small><button class="copy-btn btn-sm" onclick="copy_gendata('GENtext')">Copier</button></small>
       </div>
-      <p class="mb-1" style="word-wrap:break-word;">{{ generationdata[2] }}</p>
+      <p class="mb-1 GENtext" style="word-wrap:break-word;" id="gendata">{{ generationdata[2] }}</p>
     </a>
   </div>
   <br>
