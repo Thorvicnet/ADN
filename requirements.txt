@@ -1,3 +1,5 @@
 flask
 datetime
 Flask-Mobility
+flask-sqlalchemy
+flask.ext.session

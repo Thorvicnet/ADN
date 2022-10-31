@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{% block head%}
+{% block head %}
 <title>ADN Generator</title>
 {% endblock %}
 
@@ -33,11 +33,19 @@
 {% endblock %}
 
 {% block body %}
-<br>
-<div class="content-section" style="position:absoluste;width:60%;margin-top: 50px;user-select: text !important;z-index: 100;">
-  <h2>Voici les logs du site : </h2>
-  <p class='logs'>
-    {{ logs }}
-  </p>
-</div>
-{% endblock%}
+  <div class="col-md-6" style="margin-top: 50px;padding: auto;text-align: center;z-index:1000;background-color:white;">
+     {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <p style="text-align:center;width:79%;" class="alert alert-{{ category }}" style="width:60%;">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <div class="container" style="width:79%;">
+      <h2>Profile : {{ user }}</h2>
+      <hr>
+      <br>
+      <p>(logs of user)</p>
+    </div>
+  </div>
+{% endblock %}

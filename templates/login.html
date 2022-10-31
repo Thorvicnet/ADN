@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <title>ADN Generator</title>
+{% endblock %}
+
+{% block dna_anim %}
+<div class="col-md-3 mt-5" style="margin-left: 15px; width: 60%;padding-left: 30px;position: relative;z-index: 100;text-align: right;">
+  <a class="btn btn-dark" style="width: 50%;" href="/">Retour</a>
+</div>
+<div class="dna">
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+  <div class="ele"></div>
+</div>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="col-md-6" style="margin-top: 50px;margin-right: 50px;z-index: 1000;background-color: white;padding:20px;">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <p style="text-align:center;" class="alert alert-{{ category }}">{{ message }}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <h2>Se connecter</h2>
+  <hr>
+  <form action="#" method="post">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Nom d'utilisateur</label>
+      <input type="username" class="form-control" name="username">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Se souvenir de moi</label>
+    </div>
+    <div class="d-grid gap-2">
+      <button type="submit" class="rand-dna custom-btn btn-7" style="width:100%;"><span>Connexion</span></button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,11 +1,11 @@
 function sleep (time) {
-  return new Promise((resolve) => setTimeout(resolve, time)); // crée une promise pour l'async eu bout d'un temps time
+  return new Promise((resolve) => setTimeout(resolve, time)); // crée une promise pour l'async au bout d'un temps time
 }
 
 function backgroundcanvas(mouseX, mouseY) {
     const canvas = document.getElementById("canvas");
     canvas.width = window.innerWidth; // mettre à la taille de la fenêtre
-    canvas.height = window.innerHeight;
+    canvas.height = document.documentElement.scrollHeight-100; // Pour qu'il compte aussi les zones auquels on peut acceder en scrollant (-100 pour qu'il ne dépasse pas)
     var bounds = canvas.getBoundingClientRect();
     mouseX = mouseX - bounds.left; // corriger la position de la souris par rapport aux bords
     mouseY = mouseY - bounds.top;

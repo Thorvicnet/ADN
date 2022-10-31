@@ -32,13 +32,20 @@
 
 {% block body %}
 <div class="col-md-6">
+  
   <div class="menu ml-auto mr-auto">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <p style="text-align:center;width:79%;" class="alert alert-{{ category }}" style="width:60%;">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
     <h2>Selectionnez votre utilisation : </h2>
     <br>
+    <br>
     <div class="container">
-      {% for message in get_flashed_messages() %}
-        <div class="alert alert-danger" role="alert">{{ message }}</div>
-      {% endfor %}
+      
       <button style="margin-right:20px;" class="custom-btn btn-7" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><span>ADN custom</span></button>
     <a class="rand-dna custom-btn btn-7" type="button" href="/results?input=None&type=DNA"><span>ADN aléatoire</span></a></div>
       <br>
@@ -102,7 +109,4 @@
   </div>
   </div>
 </div>
-
-
-  
 {% endblock %}

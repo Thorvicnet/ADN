@@ -1,22 +1,86 @@
-from flask import Flask, render_template, url_for, redirect, request, flash
+from flask import Flask, render_template, url_for, redirect, request, flash, session
 from modules.TransTrad import autoData
 from flask_mobility import Mobility
 from secrets import token_hex
+from flask_sqlalchemy import SQLAlchemy
+from datetime import timedelta
 
 app = Flask(__name__)
 Mobility(app)  # Pour détecter les mobiles
 
+# config générale
+PERMANENT_SESSION_LIFETIME = timedelta(days=5)
 app.config.update(  # used for flash() (no idea y)
   TESTING=True,
   SECRET_KEY=token_hex(20) # aléatoire pour ne pas avoir le secret dans le github
 )
+# config de la database
+db = SQLAlchemy()
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+#db.init_app(app)
+
+
+class User(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  username = db.Column(db.String(50), unique=True, nullable=False)  # db.String(50)  :  len(username) => 50 max
+  password = db.Column(db.String(50), unique=True, nullable=False)
+
+  def __init__(self, username, password):
+    self.username = username
+    self.password = password
+    
 
 @app.route('/', methods=['GET'])
 def home():
+  session.permanent = True
   if request.MOBILE == True:  # Si l'utilisateur est sur téléphone
     return render_template('mobile.html')
   else:
     return render_template('home.html')
+
+
+@app.route('/signup')
+def signup():
+  return render_template('signup.html')
+
+
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+  if request.method == 'POST':  # si le serveur recoit une requete POST on le redirige vers la page utilisateur
+    session.permanent = True
+    user = request.form["username"]
+    session["user"] = user    # on sauvegarde le nom dans la session (l'expiration de la session est définie l.10)
+    password = request.form["password"]
+    session["password"] = password    # idem
+    flash(f"Bienvenue {user} !", 'success')
+    return redirect(url_for('user'))
+  else:              # si le serveur recoit GET, il retourne le page de login
+    if "user" in session:
+      user = session["user"]
+      flash(f"Vous êtes déjà connecté en tant que {user}.", 'info')
+      return redirect(url_for('user'))
+    return render_template('login.html')
+
+
+@app.route('/logout')
+def logout():
+  if "user" in session:    # on flash uniquement si l'utilisateur a réellement été deconnecté
+    user = session["user"]
+    session.pop("user", None)    # session etant un dictionnaire, on y enleve l'utilisateur.
+    flash(f"{user}, vous avez bien été déconnecté.", 'info')
+  else:
+    flash("Aucun compte n'était connecté.", 'info')
+  return redirect(url_for('login'))
+
+
+@app.route('/user')
+def user():
+  if "user" in session:
+    user = session["user"]
+    return render_template("user.html", user=user)
+  else:
+    return redirect(url_for("login"))
 
 
 @app.route('/', methods=['POST'])
@@ -39,8 +103,8 @@ def results():
   type = request.args['type']
   data = autoData(text, type)
   if data is None or 2 in data or 3 in data:  # Si l'ARN ou l'ADN rentré est incorrecte ou autre probleme, NE PAS CHANGER l'ordre des conditions sinon erreur ¯\_(ツ)_/¯
-    print('The text did not work')
-    flash('Vous avez rentré une valeur incorrecte...'
+    #print('The text did not work')
+    flash('Vous avez rentré une valeur incorrecte...', 'danger'
           )  # Est affiché dans home.html
     return redirect(url_for('home'))
   else:
@@ -55,4 +119,5 @@ def logs():
 
 
 if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=8443, debug=True)
+  #db.create_all()    not working
+  app.run(host='0.0.0.0', port=8080, debug=True)

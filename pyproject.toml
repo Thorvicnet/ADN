@@ -9,6 +9,7 @@ python = "^3.8"
 Flask = "^2.2.2"
 datetime3 = "^3.8.0"
 Flask-Mobility = "^1.1.0"
+SQLAlchemy = "^1.4.42"
 
 [tool.poetry.dev-dependencies]
 

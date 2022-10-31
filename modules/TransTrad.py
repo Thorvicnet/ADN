@@ -92,7 +92,7 @@ def autoData(value, type):
       data = [RNA_DNA(RNA), RNA, stringifyGEN(RNA_GEN(RNA))]
     if 1 in data:  # Si la traduction de l'ARN est impossible
       data[2] = 'Aucune protéine complète trouvée'
-    log.logwrite(data)
+    log.logwrite(data)  
   except:
     log.logwrite('Did not work')
     data = None
