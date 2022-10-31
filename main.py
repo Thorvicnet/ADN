@@ -40,27 +40,48 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/signup')
-def signup():
-  return render_template('signup.html')
-
-
 @app.route('/login', methods=['POST', 'GET'])
 def login():
   if request.method == 'POST':  # si le serveur recoit une requete POST on le redirige vers la page utilisateur
     session.permanent = True
     user = request.form["username"]
-    session["user"] = user    # on sauvegarde le nom dans la session (l'expiration de la session est définie l.10)
     password = request.form["password"]
-    session["password"] = password    # idem
-    flash(f"Bienvenue {user} !", 'success')
-    return redirect(url_for('user'))
+    if user == "admin" and password == "admin":    # testing
+      flash(f"Bienvenue {user} !", 'success')
+      return redirect(url_for('user'))
+    else:
+      flash(f"Mauvais mot de passe pour {user} !", 'danger')
+      return render_template('login.html')
+      
   else:              # si le serveur recoit GET, il retourne le page de login
     if "user" in session:
       user = session["user"]
       flash(f"Vous êtes déjà connecté en tant que {user}.", 'info')
       return redirect(url_for('user'))
     return render_template('login.html')
+
+
+@app.route('/signup', methods=['POST', 'GET'])
+def signup():
+  if request.method == 'POST' and "user" not in session:    # on verifie si l'utilisateur n'est pas déjà connecté dans la session
+    if request.form["password1"] == request.form["password2"]:
+      user = request.form["username"]
+      session["user"] = user      # on sauvegarde le nom dans la session
+      password = request.form["password2"]
+      session["password"] = password
+      test = {}
+      test[user] = password
+      flash(f"Bienvenue {user} !", 'success')
+      return redirect(url_for('user'))
+    else:
+      flash("Les mot de passes doivent être identiques!", 'danger')
+      return render_template('signup.html')
+  elif request.method == 'POST':
+    user = session["user"]
+    flash(f'Vous êtes déjà connecté en tant que {user}.', 'info')
+    return render_template('user.html')
+  else:
+    return render_template('signup.html')
 
 
 @app.route('/logout')
