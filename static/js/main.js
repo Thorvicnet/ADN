@@ -1,3 +1,16 @@
+var light = true
+
+function init() {
+  var elementsor = document.getElementsByClassName('btn-7');
+  for (var element in elementsor) { // on initialise la couleur des boutons
+    if (Number.isInteger(parseInt(element))) {
+      elementsor[element].style.setProperty('--background-color-gradient', 'linear-gradient(0deg, #ff9700 0%, #fb4b02 100%)');
+      elementsor[element].style.setProperty('--background-color-fix', '#fb4b02');
+    }
+  }
+}
+
+
 function sleep (time) {
   return new Promise((resolve) => setTimeout(resolve, time)); // crée une promise pour l'async au bout d'un temps time
 }
@@ -70,14 +83,51 @@ async function spinFast() {
     running = false
   }
 }
+//background: linear-gradient(0deg, #ff9700 0%, #fb4b02 100%);
+function changetheme() {
+  var elementsbw = document.getElementsByClassName('themed-bw'); // tous les éléments possédant la classe themed-bw
+  var elementsor = document.getElementsByClassName('btn-7');
+  if (light == true) {
+    light = false;
+    var bw = '#666666';
+    var orgrad = 'linear-gradient(0deg, rgba(142,36,3,1) 0%, rgba(99,17,15,1) 100%)';
+    var orfix = "rgba(99,17,15,1)";
+  }
+  else {
+    light = true;
+    var bw = 'white';
+    var orgrad = 'linear-gradient(0deg, #ff9700 0%, #fb4b02 100%)';
+    var orfix = "#fb4b02";
+  }
+  ///////////// Le blanc /////////////
+  document.body.style.backgroundColor = bw; // La couleur de fond de la page entière
+  for (var element in elementsbw) {
+    if (Number.isInteger(parseInt(element))) { // vérifie si la string correspond à un nombre en la transformant tous d'abord (element contient aussi length etc)
+      elementsbw[element].style.backgroundColor = bw;
+      //elements[element].style.borderColor = bw; // pour les bordures
+    }
+  }
+  
+  ///////////// L'orange /////////////
+    for (var element in elementsor) {
+    if (Number.isInteger(parseInt(element))) { // vérifie si la string correspond à un nombre en la transformant tous d'abord (element contient aussi length etc)
+      elementsor[element].style.setProperty('--background-color-gradient', orgrad);
+      elementsor[element].style.setProperty('--background-color-fix', orfix);
+    }
+  }
+}
+
 
 window.addEventListener("DOMContentLoaded", function(){ // on attend que le DOM se charge
-    document.addEventListener('mousemove', (event) => {
-        backgroundcanvas(event.clientX, event.clientY);
-        //console.log(`Mouse X: ${event.clientX}, Mouse Y: ${event.clientY}`); // pour debug (fait lagger)
-    });
-    var dna = document.querySelector('.dna');
-    dna.addEventListener("mouseover", () => {spinFast()});
+  init();
+  document.addEventListener('mousemove', (event) => {
+    backgroundcanvas(event.clientX, event.clientY);
+    //console.log(`Mouse X: ${event.clientX}, Mouse Y: ${event.clientY}`); // pour debug (fait lagger la console)
+  });
+  var dna = document.querySelector('.dna');
+  dna.addEventListener("mouseover", () => {spinFast()});
+  var themebtn = document.getElementById("flexSwitchCheckDefault");
+  themebtn.addEventListener('click', event => {changetheme()});
 });
 
 

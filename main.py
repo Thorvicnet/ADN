@@ -3,7 +3,7 @@ from modules.TransTrad import autoData
 from flask_mobility import Mobility
 from secrets import token_hex
 from flask_sqlalchemy import SQLAlchemy
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 Mobility(app)  # Pour détecter les mobiles
@@ -15,21 +15,27 @@ app.config.update(  # used for flash() (no idea y)
   SECRET_KEY=token_hex(20) # aléatoire pour ne pas avoir le secret dans le github
 )
 # config de la database
-db = SQLAlchemy()
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///webapp.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-#db.init_app(app)
+db = SQLAlchemy(app)
 
 
 class User(db.Model):
   id = db.Column(db.Integer, primary_key=True)
-  username = db.Column(db.String(50), unique=True, nullable=False)  # db.String(50)  :  len(username) => 50 max
-  password = db.Column(db.String(50), unique=True, nullable=False)
+  username = db.Column(db.String(20), unique=True, nullable=False)
+  password = db.Column(db.String(45), nullable=False)
+  logs = db.relationship('Logs', backref='user', lazy=True)
 
-  def __init__(self, username, password):
-    self.username = username
-    self.password = password
-    
+  def __repr__(self):    # représentation des données
+    return f"User('{self.username}', '{self.password}')"
+
+class Log(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+  content = db.Column(db.Text, nullable=False)
+
+  def __repr__(self):    # représentation des données
+    return f"User('{self.date}', '{self.content}')"
 
 @app.route('/', methods=['GET'])
 def home():
@@ -140,5 +146,4 @@ def logs():
 
 
 if __name__ == '__main__':
-  #db.create_all()    not working
   app.run(host='0.0.0.0', port=8080, debug=True)
