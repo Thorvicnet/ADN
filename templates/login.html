@@ -35,7 +35,7 @@
 
 {% block body %}
 
-<div class="col-md-6" style="margin-top: 50px;margin-right: 50px;z-index: 1000;background-color: white;padding:20px;">
+<div class="col-md-6" style="margin-top: 50px;margin-right: 50px;z-index: 1000;padding:20px;">
   {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
       {% for category, message in messages %}
