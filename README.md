@@ -8,7 +8,7 @@ Le site enregistre aussi les dernières requêtes dans adn.log (accessible sur l
 ## Téléchargement:
 ```
 $ git clone https://github.com/Thorvicnet/ADN/
-$ cd ADN
+$ cd ADN/
 ```
 ## Installation:
 ### Pour pip:
