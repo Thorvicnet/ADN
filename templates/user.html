@@ -33,11 +33,11 @@
 {% endblock %}
 
 {% block body %}
-  <div class="col-md-6" style="margin-top: 50px;padding: auto;text-align: center;z-index:1000;background-color:white;">
+  <div class="col-md-6" style="margin-top: 50px;padding: auto;text-align: center;z-index:1000;background-color:none;padding-right: 200px;">
      {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
         {% for category, message in messages %}
-          <p style="text-align:center;width:79%;" class="alert alert-{{ category }}" style="width:60%;">{{ message }}</p>
+          <p style="text-align:center;width:auto;" class="alert alert-{{ category }}" style="width:60%;">{{ message }}</p>
         {% endfor %}
       {% endif %}
     {% endwith %}

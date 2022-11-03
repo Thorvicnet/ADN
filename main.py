@@ -9,11 +9,10 @@ app = Flask(__name__)
 Mobility(app)  # Pour détecter les mobiles
 
 # config générale
-PERMANENT_SESSION_LIFETIME = timedelta(days=5)
+PERMANENT_SESSION_LIFETIME = timedelta(minutes=100)
 app.config.update(
   TESTING=True,
-  SECRET_KEY=token_hex(
-    20)  # aléatoire pour ne pas avoir le secret sur github
+  SECRET_KEY=token_hex(20)  # aléatoire pour ne pas avoir le secret sur github
 )
 # config de la database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///webapp.db'
@@ -24,8 +23,7 @@ db = SQLAlchemy(app)
 class User(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   username = db.Column(db.String(20), unique=True, nullable=False)
-  password = db.Column(db.String(45), nullable=False)
-  data = db.Column(db.String(200), nullable=False)
+  data = db.Column(db.String(200), nullable=False)    # logs
 
   def __repr__(self):  # représentation des données
     return f"User('{self.username}', '{self.password}')"
@@ -45,44 +43,30 @@ def login():
   if request.method == 'POST':  # si le serveur recoit une requete POST on le redirige vers la page utilisateur
     session.permanent = True
     user = request.form["username"]
-    if request.form["password"] == (User.query.filter_by(username=request.form["username"]).first()).password:
-      pass
-    password = request.form["password"]
-    if user == "admin" and password == "admin":  # testing
-      flash(f"Bienvenue {user} !", 'success')
-      return redirect(url_for('user'))
-    else:
-      flash(f"Mauvais mot de passe pour {user} !", 'danger')
-      return render_template('login.html')
-
+    flash(f"Bienvenue {user} !", 'success')
+    return redirect(url_for('profile'))
   else:  # si le serveur recoit GET, il retourne le page de login
     if "user" in session:
       user = session["user"]
       flash(f"Vous êtes déjà connecté en tant que {user}.", 'info')
-      return redirect(url_for('user'))
+      return redirect(url_for('profile'))
     return render_template('login.html')
 
 
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
   session.permanent = True
-  if request.method == 'POST' and "user" not in session:  # on verifie si l'utilisateur n'est pas déjà connecté dans la session
-    if request.form["password1"] == request.form["password2"]:
-      user = User(username=request.form["username"],
-                  password=request.form["password2"])
-      db.session.add(user)
-      db.session.commit()
-      #session["user"] = user  # on sauvegarde le nom dans la session
-      #session["password"] = password
-      flash(f"Bienvenue {user} !", 'success')
-      return redirect(url_for('user'))
-    else:
-      flash("Les mot de passes doivent être identiques!", 'danger')
-      return render_template('signup.html')
+  if request.method == 'POST' and "user" not in session:
+    user = request.form["username"]
+    session["user"] = user  # on sauvegarde le nom dans la session
+    flash(f"Bienvenue {user} !", 'success')
+    return redirect(url_for('profile'))
   elif request.method == 'POST':
     user = session["user"]
     flash(f'Vous êtes déjà connecté en tant que {user}.', 'info')
-    return render_template('user.html')
+    return render_template('profile.html')
+  elif "user" in session:
+    return redirect(url_for('profile'))
   else:
     return render_template('signup.html')
 
@@ -91,9 +75,7 @@ def signup():
 def logout():
   if "user" in session:  # on flash uniquement si l'utilisateur a réellement été deconnecté
     user = session["user"]
-    session.pop(
-      "user",
-      None)  # session etant un dictionnaire, on y enleve l'utilisateur.
+    session.pop("user", None)  # session etant un dictionnaire, on y enleve l'utilisateur.
     flash(f"{user}, vous avez bien été déconnecté.", 'info')
   else:
     flash("Aucun compte n'était connecté.", 'info')
@@ -101,7 +83,7 @@ def logout():
 
 
 @app.route('/user')
-def user():
+def profile():
   if "user" in session:
     user = session["user"]
     return render_template("user.html", user=user)
