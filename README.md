@@ -5,6 +5,9 @@
 ## Description:
 Ce programme permet de faire tourner un serveur avec le framework flask permettant de transcire de l'ADN en ARNm ou inversement et de traduire ces derniers en acides aminés.
 Le site enregistre aussi les dernières requêtes dans adn.log (accessible sur le site).
+
+
+Une demo est disponible sur [replit](adn.thorvicnet.repl.co)
 ## Téléchargement:
 ```
 $ git clone https://github.com/Thorvicnet/ADN/
