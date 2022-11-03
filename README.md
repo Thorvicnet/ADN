@@ -4,7 +4,13 @@ Ce programme permet de faire tourner un serveur avec le framework flask permetta
 Le site enregistre aussi les dernières requêtes dans adn.log (accessible sur le site).
 
 ## Installation:
+### Pour pip:
 ```
 $ pip install -r requirements.txt
+$ python main.py
+```
+### Pour poetry:
+```
+$ poetry install
 $ python main.py
 ```
