@@ -7,7 +7,7 @@ Ce programme permet de faire tourner un serveur avec le framework flask permetta
 Le site enregistre aussi les dernières requêtes dans adn.log (accessible sur le site).
 
 
-Une demo est disponible sur [replit](https://adn.thorvicnet.repl.co)
+Une demo est disponible sur [replit](https://adn.thorvicnet.repl.co).
 ## Téléchargement:
 ```
 $ git clone https://github.com/Thorvicnet/ADN/
