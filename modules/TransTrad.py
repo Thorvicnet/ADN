@@ -1,6 +1,7 @@
 from random import randint
 import modules.DictionaryGEN as dictGEN  # Sinon ce code est impossible à lire
 import modules.Logsave as log
+
 """
 ERRORS LIST:
 1 = erreur dans RNA_GEN() : manque un codon d'initiation ou/et un codon stop

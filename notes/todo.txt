@@ -19,3 +19,11 @@
 - Update : meilleur format pour les logs
 - Fix : animation adn
 
+
+- Ce qu'on a à faire avant date limite
+
+    - authentification nom d'utilisateur seuelement avec logs lui correspoonodant
+    - simple database avec sqlachmey contenant un seul objet User(Model.db) contenant les logs 
+    - lien avec https://www.ebi.ac.uk/Tools/sss/fasta/
+    - rajouter des commentaires
+    - faire les comptes rendus

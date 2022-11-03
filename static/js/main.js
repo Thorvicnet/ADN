@@ -1,16 +1,24 @@
 var light = true
+var start = false
+var running = false; // Pour empĉher SpinFast() de se lancer plusieurs fois
 
 function initTheme() {
   if (document.cookie == 'darkmode=true') {
-    document.getElementById('mainstyle').setAttribute('href', "static/css/maindark.css");
+    document.getElementById('mainstyle').setAttribute('href', "static/css/maindark.css"); // l'utilisateur est en darkmode
   }
   else {
     document.cookie = 'darkmode=false' // Au cas où le cookie n'existe pas encore
   }
 }
 
+function nooverflow () {
+  if (document.body.scrollHeight < 1100) {
+    document.getElementsByClassName('nowindowoverflow')['0'].style.display = "none"; // pour l'image de l'alpiniste
+  }
+}
+
 function sleep (time) {
-  return new Promise((resolve) => setTimeout(resolve, time)); // crée une promise pour l'async au bout d'un temps time
+  return new Promise((resolve) => setTimeout(resolve, time)); // crée une promise pour l'async au bout d'un temps time permet donc de mettre en pause la fonction
 }
 
 function backgroundcanvas(mouseX, mouseY) {
@@ -30,7 +38,7 @@ function backgroundcanvas(mouseX, mouseY) {
                 ctx.arc(x, y, 1, 0, 2 * Math.PI, true); // on trace les points (cercle) normalement
                 ctx.stroke();
             }*/
-            if (distance < 20) { // les points partent trop loin après calcul (on les tracent pas)
+            if (distance < 20) { // les points partent trop loin après calcul (on ne les tracent pas)
                 continue
             }
             else {
@@ -56,32 +64,36 @@ function backgroundcanvas(mouseX, mouseY) {
     }
 }
 
-var running = false; // Pour empĉher le programme de se lancer plusieurs fois
-      
+function spin() {
+  if (start==true) {
+    spinFast();
+  }
+  const object = document.querySelectorAll('.ele');
+  object.forEach(ele => { // on remet à la normale
+      animdel = ele.style['animation-delay'];
+      ele.style.animation='run 2s linear 1';
+      ele.style['animation-delay'] = animdel;
+      });
+}
+
+
 async function spinFast() {
-  if (running == false) { // Si la onction est déjà entrain de tourner ne pas la lancer
+  if (running == false) { // Si la fonction est déjà entrain de tourner ne pas la lancer
     running = true;
     console.log("spinning"); //pour print dans la console
     const object = document.querySelectorAll('.ele');
-    for (let i = 2; i > 1.5; i=i-0.01) {
-      t= 4-(i**2) // pour que l'animation deccélère plus i s'approche de sa vitesse max (i = 1)
-      object.forEach(ele => { // Même chose qu'un "for ele in object:" en python
-      animdel = ele.style['animation-delay']; // j'en ai besoin puisque la ligne suivante supprime cette valeur
-      ele.style.animation='run ' + i + 's linear infinite'; // On change la vitesse d'animation
-      ele.style['animation-delay'] = animdel;
-      });
-      await sleep(t);
-    }
     object.forEach(ele => { // on remet à la normale
       animdel = ele.style['animation-delay'];
-      ele.style.animation='run 2s linear infinite';
+      ele.style.animation='run 2s ease-in-out infinite';
       ele.style['animation-delay'] = animdel;
+      sleep(150);
       });
-    await sleep(1000) // laisser un temps d'attente pour qu'il ne se déclenche pas imédiatemment
+    await sleep(1000); // temps d'attente
     running = false
+    start = false
   }
 }
-//background: linear-gradient(0deg, #ff9700 0%, #fb4b02 100%);
+
 function changetheme() {
   var stylesheet = document.getElementById('mainstyle'); // On cherche le tag du lien vers main.css
   if ("darkmode=false" == document.cookie) {
@@ -96,23 +108,31 @@ function changetheme() {
   }
 }
 
-
-window.addEventListener("DOMContentLoaded", function(){ // on attend que le DOM se charge
-  initTheme(); // pour changer le theme lors du chargement d'une nouvelle page
-  document.addEventListener('mousemove', (event) => {
-    backgroundcanvas(event.clientX, event.clientY);
-    //console.log(`Mouse X: ${event.clientX}, Mouse Y: ${event.clientY}`); // pour debug (fait lagger la console)
-  });
-  var dna = document.querySelector('.dna');
-  dna.addEventListener("mouseover", () => {spinFast()});
-  var themebtn = document.getElementById("flexSwitchCheckDefault");
-  themebtn.addEventListener('click', event => {changetheme()});
-});
-
-
 function copy_gendata(objclass){ // prend en argument la class du texte de tag <p> et d'id = "gendata"
   var val = document.getElementsByClassName(objclass).gendata.innerText; // on accede au text dans l'élément
    // On copie
   navigator.clipboard.writeText(val);
   alert("C'est copié ! \n")
 }
+
+window.addEventListener("DOMContentLoaded", function(){ // on attend que le DOM se charge
+  initTheme(); // pour changer le theme lors du chargement d'une nouvelle page
+  document.addEventListener('mousemove', (event) => { // exécute à chaque event : mousemove
+    backgroundcanvas(event.clientX, event.clientY); // prend en argument la position de la souris
+    //console.log(`Mouse X: ${event.clientX}, Mouse Y: ${event.clientY}`); // pour debug (!!! fait lagger la console)
+  });
+  var themebtn = document.getElementById("flexSwitchCheckDefault");
+  themebtn.addEventListener('click', event => {changetheme()});
+  const dna = document.querySelector('.dna');
+  dna.addEventListener("mouseover", () => {start=true});
+  nooverflow(); // ne génère pas certain éléments pour ne pas rajouter de scrollbar
+});
+
+/*
+async function main() { // DANGER fait crash pas seulement le navigateur mais aussi l'ordinateur
+  while (true) {
+    await spin();
+    console.log('hi')
+  }
+}
+main();*/

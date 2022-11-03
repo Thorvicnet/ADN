@@ -6,3 +6,6 @@ j'ai pas mal suer sur le css et l'html notamment pour centrer le brin d'adn dans
 egalement sur les outlines des deux boutons principaux qui bugais mais facilement rectifiable en rajoutant la balise <span> et le css correspondant (span {...})
 
 difficultés avec cols et les rows avec l'implementation de la sidebar
+
+difficultés pour l'implementation de la database avec sqlalchemy pck User(Model.db) bug
+
