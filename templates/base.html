@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <link rel="icon" href="/static/images/favicon.png" type="image/png">
   <meta charset="UTF-8">
@@ -23,9 +23,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" style="padding-right:20px;" href="/signup">Créer un compte</a>
-      <a class="nav-item nav-link" style="padding-right:20px;" href="/login">Connexion</a>
-      <a class="nav-item nav-link" href="/logout">Se déconnecter</a>
+      <a class="nav-item nav-link" style="padding-right:20px;" href="/logs">Historique</a>
     </div>
   </div>
   <span class="navbar-text" style="padding-right:50px;">
@@ -57,11 +55,12 @@
               {% block body %}{% endblock %}
             <div class="col-md-3" style="border:1px;padding-top:50px;">
               <div class="content-section themed-bw" style="position: absolute;">
-                <h3>Sidebar</h3>
-                <p class='text-muted'>Options supplémentaires
+                <h3>Ressources</h3>
+                <p class='text-muted'>Quelques ressources utiles
                   <ul class="list-group">
-                    <a href="/logs" class="list-group-item list-group-item-light themed-bw">Historique</a>
-                    <a href="#" class="list-group-item list-group-item-light themed-bw">Représentation tridimensionelle</a>
+                    <a href="https://dictionnaire.sensagent.leparisien.fr/Code%20g%C3%A9n%C3%A9tique/fr-fr/" class="list-group-item list-group-item-light themed-bw">Expliquation sur le code génétique</a>
+                    <a href="https://www.ebi.ac.uk/Tools/sss/fasta/" class="list-group-item list-group-item-light themed-bw">Recherche de la séquence dans une base de donnée</a>
+                    <a href="https://www.uniprot.org/" class="list-group-item list-group-item-light themed-bw">Recherche d'une protéine dans Uniprot</a>
                   </ul>
                 </p>
               </div>

@@ -1,19 +1,20 @@
-from flask import Flask, render_template, url_for, redirect, request, flash, session
+from flask import Flask, render_template, url_for, redirect, request, flash
 from modules.TransTrad import autoData
 from flask_mobility import Mobility
 from secrets import token_hex
-from flask_sqlalchemy import SQLAlchemy
-from datetime import timedelta
+#from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 Mobility(app)  # Pour détecter les mobiles
 
-# config générale
-PERMANENT_SESSION_LIFETIME = timedelta(minutes=100)
 app.config.update(
   TESTING=True,
   SECRET_KEY=token_hex(20)  # aléatoire pour ne pas avoir le secret sur github
 )
+'''
+# Après réflexion on a réalisé que la database ne servait pas à grand chose donc
+# voici son cadavre
+
 # config de la database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///webapp.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -23,19 +24,10 @@ db = SQLAlchemy(app)
 class User(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   username = db.Column(db.String(20), unique=True, nullable=False)
-  data = db.Column(db.String(200), nullable=False)    # logs
+  data = db.Column(db.String(200), nullable=False)
 
   def __repr__(self):  # représentation des données
     return f"User('{self.username}', '{self.password}')"
-
-
-@app.route('/', methods=['GET'])
-def home():
-  session.permanent = True
-  if request.MOBILE == True:  # Si l'utilisateur est sur téléphone
-    return render_template('mobile.html')
-  else:
-    return render_template('home.html')
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -89,6 +81,15 @@ def profile():
     return render_template("user.html", user=user)
   else:
     return redirect(url_for("login"))
+'''
+
+
+@app.route('/', methods=['GET'])
+def home():
+  if request.MOBILE == True:  # Si l'utilisateur est sur téléphone
+    return render_template('mobile.html')
+  else:
+    return render_template('home.html')
 
 
 @app.route('/', methods=['POST'])
@@ -126,5 +127,5 @@ def logs():
   return render_template('logs.html', logs=logs)
 
 
-if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=8080, debug=True)
+if __name__ == '__main__':  # Montre que c'est le fichier principal
+  app.run(host='0.0.0.0', port=443, debug=True)

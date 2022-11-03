@@ -1,5 +1,5 @@
-var light = true
-var start = false
+var light = true;
+var start = false;
 var running = false; // Pour empĉher SpinFast() de se lancer plusieurs fois
 
 function initTheme() {
@@ -7,7 +7,7 @@ function initTheme() {
     document.getElementById('mainstyle').setAttribute('href', "static/css/maindark.css"); // l'utilisateur est en darkmode
   }
   else {
-    document.cookie = 'darkmode=false' // Au cas où le cookie n'existe pas encore
+    document.cookie = 'darkmode=false'; // Au cas où le cookie n'existe pas encore
   }
 }
 
@@ -39,7 +39,7 @@ function backgroundcanvas(mouseX, mouseY) {
                 ctx.stroke();
             }*/
             if (distance < 20) { // les points partent trop loin après calcul (on ne les tracent pas)
-                continue
+                continue;
             }
             else {
               let mov = (1000/distance)
@@ -89,8 +89,8 @@ async function spinFast() {
       sleep(150);
       });
     await sleep(1000); // temps d'attente
-    running = false
-    start = false
+    running = false;
+    start = false;
   }
 }
 
@@ -98,12 +98,12 @@ function changetheme() {
   var stylesheet = document.getElementById('mainstyle'); // On cherche le tag du lien vers main.css
   if ("darkmode=false" == document.cookie) {
     light = false;
-    document.cookie = "darkmode=true" // On enregistre son theme pour le changement de page
+    document.cookie = "darkmode=true"; // On enregistre son theme pour le changement de page
     stylesheet.setAttribute('href', "static/css/maindark.css"); // On change le css pour la stylesheet dark mode
   }
   else {
     light = true;
-    document.cookie = "darkmode=false"
+    document.cookie = "darkmode=false";
     stylesheet.setAttribute('href', "static/css/main.css");
   }
 }
@@ -112,7 +112,7 @@ function copy_gendata(objclass){ // prend en argument la class du texte de tag <
   var val = document.getElementsByClassName(objclass).gendata.innerText; // on accede au text dans l'élément
    // On copie
   navigator.clipboard.writeText(val);
-  alert("C'est copié ! \n")
+  alert("C'est copié ! \n");
 }
 
 window.addEventListener("DOMContentLoaded", function(){ // on attend que le DOM se charge
@@ -129,7 +129,7 @@ window.addEventListener("DOMContentLoaded", function(){ // on attend que le DOM 
 });
 
 /*
-async function main() { // DANGER fait crash pas seulement le navigateur mais aussi l'ordinateur
+async function main() { // DANGER fait crash pas seulement le navigateur mais aussi l'ordinateur NE PAS TOUCHER
   while (true) {
     await spin();
     console.log('hi')
