@@ -15,7 +15,7 @@ def logwrite(text):
       'adn.log', 'w'
     )  # On ouvre les logs en mode d'écriture
     text = '\n\n' + datetime.fromtimestamp(
-      time.time()).strftime("%d-%m-%Y, %H:%M:%S") + ' ' + str(text) # On rajoute au texte la date et heure
+      time.time()).strftime("%d-%m-%Y, %H:%M:%S") + ' GMT+0 ' + str(text) # On rajoute au texte la date et heure
     # time.time() nous donne la time stamp
     # datetime.fromtimestamp() la traduit en valeur compréhensible
     # strftime(format) la transforme dans le format voulu, ici "day-month-year, hour:minutes:seconds"

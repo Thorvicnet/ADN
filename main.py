@@ -122,10 +122,13 @@ def results():
 
 @app.route('/logs')
 def logs():
-  with open('adn.log', 'r') as f:
-    logs = "".join(f.readlines()[-30:])
+  try:
+    with open('adn.log', 'r') as f:
+      logs = "".join(f.readlines()[:30])
+  except FileNotFoundError:
+    with open('adn.log', 'x') as f:
+      logs = ""
   return render_template('logs.html', logs=logs)
-
 
 if __name__ == '__main__':  # Montre que c'est le fichier principal
   app.run(host='0.0.0.0', port=443, debug=True)
