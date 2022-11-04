@@ -25,4 +25,4 @@
     ✅ - lien avec https://www.ebi.ac.uk/Tools/sss/fasta/
     ✅ - rajouter des commentaires
     ✅ - rajouter les credits
-    - faire les comptes rendus
+    ✅ - faire les comptes rendus
