@@ -9,4 +9,4 @@
 - difficulties pour trouver plusieurs acides aminé dans le même ARNm (diff de format)
 - problème avec les requêtes POST (rajout d'un nouveau argument)
 - unittest cannot do test : "ImportError: attempted relative import with no known parent package", needs to be transformed into a python package
-- canvas ne veut pas fonctionner, solution : attendre que le DOM charge
+- canvas ne veut pas fonctionner, solution : attendre que le DOM chargel

@@ -8,7 +8,6 @@ app = Flask(__name__)
 Mobility(app)  # Pour détecter les mobiles
 
 app.config.update(
-  TESTING=True,
   SECRET_KEY=token_hex(20)  # aléatoire pour ne pas avoir le secret sur github
 )
 '''
@@ -27,7 +26,7 @@ class User(db.Model):
   data = db.Column(db.String(200), nullable=False)
 
   def __repr__(self):  # représentation des données
-    return f"User('{self.username}', '{self.password}')"
+    return f"User('{self.username}': '{self.data}')"
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -84,19 +83,24 @@ def profile():
 '''
 
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods=[
+  'GET'
+])  # On définit quoi faire lorsque un utilisateur demande le chemin /
 def home():
   if request.MOBILE == True:  # Si l'utilisateur est sur téléphone
-    return render_template('mobile.html')
+    return render_template('mobile.html')  # On affiche mobile.html
   else:
     return render_template('home.html')
 
 
-@app.route('/', methods=['POST'])
+@app.route(
+  '/', methods=['POST']
+)  # On définit quoi faire lorsque un utilisateur envoie une requêtes POST au chemin /
 def index_post():
   try:
     DNA = request.form['DNA'].upper()
-    return redirect(url_for('results', input=DNA, type='DNA'))
+    return redirect(url_for('results', input=DNA,
+                            type='DNA'))  # On l'envoie sur la page de resultat
   except:
     pass
   try:
@@ -108,13 +112,13 @@ def index_post():
 
 @app.route('/results')
 def results():
-  text = request.args['input']
+  text = request.args['input']  # On récupère les variables
   type = request.args['type']
   data = autoData(text, type)
-  if data is None or 2 in data or 3 in data:  # Si l'ARN ou l'ADN rentré est incorrecte ou autre probleme, NE PAS CHANGER l'ordre des conditions sinon erreur ¯\_(ツ)_/¯
-    #print('The text did not work')
-    flash('Vous avez rentré une valeur incorrecte...',
-          'danger')  # Est affiché dans home.html
+  if data is None or 2 in data or 3 in data:  # Si l'ARN ou l'ADN rentré est incorrecte ou autre probleme
+    flash(
+      'Vous avez rentré une valeur incorrecte...', 'danger'
+    )  # Est affiché dans la page dans laquelle l'utilisateur est redirigé (ici home.html)
     return redirect(url_for('home'))
   else:
     return render_template('results.html', generationdata=data)
@@ -130,5 +134,11 @@ def logs():
       logs = ""
   return render_template('logs.html', logs=logs)
 
+
+@app.route('/authors')
+def credits():
+  return render_template('authors.html')
+
+
 if __name__ == '__main__':  # Montre que c'est le fichier principal
-  app.run(host='0.0.0.0', port=443, debug=True)
+  app.run(host='0.0.0.0', port=443)

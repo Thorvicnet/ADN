@@ -12,13 +12,13 @@ function initTheme() {
 }
 
 function nooverflow () {
-  if (document.body.scrollHeight < 1100) {
-    document.getElementsByClassName('nowindowoverflow')['0'].style.display = "none"; // pour l'image de l'alpiniste
+  if (document.body.scrollHeight < 1100) { // Si la fenêtre est trop petite
+    document.getElementsByClassName('nowindowoverflow')['0'].style.display = "none"; // l'alpiniste ne sera pas généré
   }
 }
 
 function sleep (time) {
-  return new Promise((resolve) => setTimeout(resolve, time)); // crée une promise pour l'async au bout d'un temps time permet donc de mettre en pause la fonction
+  return new Promise((resolve) => setTimeout(resolve, time)); // crée une promise pour l'async au bout d'un temps time, permet donc de mettre en pause la fonction
 }
 
 function backgroundcanvas(mouseX, mouseY) {
@@ -64,6 +64,7 @@ function backgroundcanvas(mouseX, mouseY) {
     }
 }
 
+/*Désactivé puisque il était impossible de modifier la vitesse sans que cela paraisse étrange
 function spin() {
   if (start==true) {
     spinFast();
@@ -93,6 +94,7 @@ async function spinFast() {
     start = false;
   }
 }
+*/
 
 function changetheme() {
   var stylesheet = document.getElementById('mainstyle'); // On cherche le tag du lien vers main.css
@@ -124,7 +126,7 @@ window.addEventListener("DOMContentLoaded", function(){ // on attend que le DOM 
   var themebtn = document.getElementById("flexSwitchCheckDefault");
   themebtn.addEventListener('click', event => {changetheme()});
   const dna = document.querySelector('.dna');
-  dna.addEventListener("mouseover", () => {start=true});
+  dna.addEventListener("mousemove", () => {start=true}); // pour Spin qui ne fonctionne pas
   nooverflow(); // ne génère pas certain éléments pour ne pas rajouter de scrollbar
 });
 

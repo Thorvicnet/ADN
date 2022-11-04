@@ -11,18 +11,17 @@ def logwrite(text):
   try:
     with open('adn.log', 'r') as f:
       logs = f.readlines()  # On ouvre les logs et on les écrits dnas logs
-    f = open(
-      'adn.log', 'w'
-    )  # On ouvre les logs en mode d'écriture
-    text = '\n\n' + datetime.fromtimestamp(
-      time.time()).strftime("%d-%m-%Y, %H:%M:%S") + ' GMT+0 ' + str(text) # On rajoute au texte la date et heure
+    f = open('adn.log', 'w')  # On ouvre les logs en mode d'écriture
+    text = datetime.fromtimestamp(
+      time.time()).strftime("(%d/%m/%Y)  %H:%M") + '  [GMT+0] \n' + str(
+        text) + '\n\n'  # On rajoute au texte la date et heure
     # time.time() nous donne la time stamp
     # datetime.fromtimestamp() la traduit en valeur compréhensible
     # strftime(format) la transforme dans le format voulu, ici "day-month-year, hour:minutes:seconds"
-    logs.insert(0, text) # On rajoute la nouvelle entrée dans les logs
-    f.writelines(logs) # On écrit les logs au fichier
-    f.close() # On ferme le fichier
+    logs.insert(0, text)  # On rajoute la nouvelle entrée dans les logs
+    f.writelines(logs)  # On écrit les logs au fichier
+    f.close()  # On ferme le fichier
   except:  # Si le fichier n'existe pas : le créer ("x")
     f = open("adn.log", "x")
     f.close()
-    logwrite(text) # Et on réessaye
+    logwrite(text)  # Et on réessaye

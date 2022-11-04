@@ -4,12 +4,38 @@
   margin-top: 50px;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-500%); /*au début en dehors de l'écran puis à la position normale*/
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
+.user-card:nth-of-type(3) { /* Différent délais pour que les cards tombent à des intervalles différentes*/
+  animation-delay: -0.15s;
+}
+.user-card:nth-of-type(2) {
+  animation-delay: -0.3s;
+}
+.user-card:nth-of-type(1) {
+  animation-delay: -0.45s;
+}
+.user-card { /*Etat de base*/
+  animation: 1.3s ease-out 4s 1 slideInFromTop; /*Animation durant 1s en ease-out (ralenti à l'arrivée) qui commence après 4s nommé slideInFromTop*/
+  margin-top: 0px;
+  margin-left: 30px;
+  margin-right: 30px;
+  transition: 0.2s; /* Temps de transition*/
+}
+.user-card:hover { /*Après hover*/
+  margin-top: -20px;
+  margin-left: 60px;
+  box-shadow: -10px 10px 5px gray; /* Pour l'ombre*/
+  transition: 0.2s;
+}
+
 
 .rand-dna {
   text-decoration: none;
@@ -80,11 +106,16 @@
 
 .title {
   margin: 10px;
-  margin-left: 60px;
+  margin-left: 60px;@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
   margin-right: 40px;
 }
-
-/* 7 */
 
 .custom-btn {
   width: 230px;
@@ -254,16 +285,15 @@ a.article-title:hover {
   font-size: 2.5rem;
 }
 
-/* ADN animation */
+/* ADN animation trouvée sur "https://codepen.io/ghost028/pen/KgMerN", auteur: Ghost*/
 :root {
   --bg-color: radial-gradient(circle at center, #fff, #ccc);
-  --dot-color1:#ff7024;
+  --dot-color1:#ff7024; /* Couleurs des points en variables */
   --dot-color2:#0000bd;
 }
 
 body {
   background-size: cover;
-  
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -288,7 +318,7 @@ body {
   border-left: 1px #B0B0B0 dashed;
   position: relative;
   transform: rotateX(-360deg);
-  animation: run 2s linear infinite;
+  animation: run 2s linear infinite; /* Lancement de l'animation (2s par cycle, vitesse linéaire, répète à l'infini)*/
 }
 .ele:before, .ele:after {
   content: "";
@@ -307,7 +337,7 @@ body {
 .ele:after {
   bottom: -2px;
 }
-.ele:nth-of-type(1) {
+.ele:nth-of-type(1) { /* Différent délais pour que les points soit décalés donc comme une double hélice*/
   animation-delay: -0.15s;
 }
 .ele:nth-of-type(2) {

@@ -16,12 +16,13 @@
 ✅- Feature : User authentification (seulement par username)
   -> page de login
   -> page de sign up
-- Update : meilleur format pour les logs
-- Fix : animation adn
+✅- Update : meilleur format pour les logs
+✅- Fix : animation adn
 
 
 - Ce qu'on a à faire avant date limite
 
     ✅ - lien avec https://www.ebi.ac.uk/Tools/sss/fasta/
     ✅ - rajouter des commentaires
+    ✅ - rajouter les credits
     - faire les comptes rendus
