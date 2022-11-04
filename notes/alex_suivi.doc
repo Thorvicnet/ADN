@@ -1,11 +1,27 @@
-la ligne de code : ARN_start = 'AUG' + ARN.split('AUG', 1)[1] a une IndexError quand 'AUG' n'est pas générer par gen_adn() (logique)
-au debut j'ai fait un try: except mais faut regenerer gen_adn donc boucle infini (d'erreurs) quand c'est faux, donc j'avais pensé a faire une boucle while qui englobe les deux fonctions mais c'est vraiment degueulasse. En attendant je fais juste une boucle conditionnelle if 'AUG' in ARN_start: ARN_start = 'AUG' + ARN.split('AUG', 1)[1] else : sys.exit()
-J'ai au final réussi en gardant ma boucle conditionnelle et je retourne False si il n'y a pas de codon d'initiation et dans main.py je verifie si transcription() retourne False, si c'est le cas je relance le programme pour regénérer un nouveau brin d'ADN
+(v1 de Transtrad) 14 octobre
+La ligne de code : ARN_start = 'AUG' + ARN.split('AUG', 1)[1] a une IndexError quand 'AUG' n'est pas générer par gen_adn() (logique)au debut j'ai fait un try: except mais faut regenerer gen_adn donc boucle infini (d'erreurs) quand c'est faux, donc j'avais pensé a faire une boucle while qui englobe les deux fonctions mais c'est vraiment pas très propre. En attendant je fais juste une boucle conditionnelle if 'AUG' in ARN_start: ARN_start = 'AUG' + ARN.split('AUG', 1)[1] else : sys.exit() pour ne pas afficher toutes les erreurs lorsque les autres membres du groupe voudront lancer le code. J'ai au final réussi en gardant ma boucle conditionnelle et je retourne False si il n'y a pas de codon d'initiation et dans main.py je verifie si transcription() retourne False, si c'est le cas je relance le programme pour regénérer un nouveau brin d'ADN.
 
-j'ai pas mal suer sur le css et l'html notamment pour centrer le brin d'adn dans chaque div dans results.html, comme generationdata est une variable, le div container ne centre pas le brin d'adn car il ne connait pas sa longueur j'ai donc defini width d'une certaine longueur qui fait que le brin d'adn ne depasse pas à <= 100 caracteres
-egalement sur les outlines des deux boutons principaux qui bugais mais facilement rectifiable en rajoutant la balise <span> et le css correspondant (span {...})
+(14-22 octobre : j'ai fait pas mal de travail sur le backend de la webapp (main.py) bcp d'ameliorations et des nouvelles idées que nous avons eu lors de "réunion" en appel avec le groupe, j'ai aussi travaillé sur les templates html et fait plusieurs rectifications CSS)
 
-difficultés avec cols et les rows avec l'implementation de la sidebar
+22 octobre
+J'ai eu beaucoup de mal sur le css et l'html notamment pour centrer le brin d'adn dans chaque div dans results.html, comme generationdata est une variable (syntaxe jinja), le div container ne centre pas le brin d'adn car il ne connait pas sa longueur j'ai donc defini width d'une certaine longueur qui fait que le brin d'adn ne depasse pas à <= 100 caracteres. J'ai eu l'idée de rajouter la fonction "copier" dans results.html (permettant de copier le brin d'ADN, d'ARNm ou encore la protéine) j'ai commencer à coder la fonction copy_gendata() en javascript mais heuresement pour moi Victor m'est venu en aide et il a pris le relai sur le javascript 😅
 
-difficultés pour l'implementation de la database avec sqlalchemy pck User(Model.db) bug
+23 octobre
+Les animations CSS des outlines des boutons orange principaux (Generation d'adn), Ce probleme était facilement rectifiable en rajoutant la balise <span> et le css correspondant (span {...}) n'était donc pas atteint.
+
+24 octobre
+J'ai eu beaucoup de mal avec la sidebar car il fallait bien maîtriser les "rows" et les "cols" en html/css, même avec l'aide de Bootstrap j'avais encore du mal à tout bien positionner surtour avec le fond réactif au passage souris les boutons et les div était donc en dessous de ce fond et n'étaient donc pas répondant. Pour remédier à ce problème j'ai modifié le z-index (propriété CSS concernant les différents niveau de priorité). Pour etre sur que rien ne passe en priorité par rapport aux div principaux je met un z-index de 1000.
+
+(24-31 octobre : à peu près pareil que du 14 au 22, pas de problèmes majeurs surtout des ameliorations et rectifications de petits problemes)
+
+31 octobre
+BEAUCOUP de difficultés pour l'implémentation de la database avec sqlalchemy car la classe User(Model.db) (cf. cadavre de la database) renvoyait beaucoup d'erreurs et j'ai longuement essayer de rectifier ce probleme mais même en suivant toutes les documentations que j'ai pu trouver à la lettre je n'arrivais toujours pas à la résolution du probleme. Avec le groupe nous avons décidé d'abandonner l'implémentation de la database car le rapport efforts_nécessaires / utilité  n'était pas vraiment bénéfique selon nous.
+
+3 novembre
+Suppression avec tristesse de la database (😔)
+
+4 novembre
+J'ai travaillé sur le projet jusqu'au dernier jour (ajourd'hui), les 4 derniers jours on été consacrés à la verification du code dans son intérgralité, rectifications de toutes les erreurs, ameliorations du CSS, ajouts de quelques commentaires.
+
+Alexandre Lisiecki
 
