@@ -75,7 +75,7 @@ def logout():
 
 @app.route('/user')
 def profile():
-  if "user" in session:
+  if "user" in session:[DNA, DNA_RNA(DNA),
     user = session["user"]
     return render_template("user.html", user=user)
   else:
@@ -99,8 +99,7 @@ def home():
 def index_post():
   try:
     DNA = request.form['DNA'].upper()
-    return redirect(url_for('results', input=DNA,
-                            type='DNA'))  # On l'envoie sur la page de resultat
+    return redirect(url_for('results', input=DNA, type='DNA'))  # On l'envoie sur la page de resultat
   except:
     pass
   try:
@@ -141,4 +140,4 @@ def credits():
 
 
 if __name__ == '__main__':  # Montre que c'est le fichier principal
-  app.run(host='0.0.0.0', port=443)
+  app.run(host='0.0.0.0', port=8000)
